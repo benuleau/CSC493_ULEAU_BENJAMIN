@@ -9,7 +9,13 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.Application.ApplicationType;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
+
 import util.CameraHelper;
+
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.utils.Array;
+import com.uleau.gdx.game.Assets;
+
 /**
  * @author Benjamin Uleau
  *
@@ -57,7 +63,7 @@ public class WorldController extends InputAdapter{
 		return false;
 	}
 	
-	private void initTestObjects(){
+	/*private void initTestObjects(){
 		//Create new array for 5 sprites
 		testSprites = new Sprite[5];
 		
@@ -79,6 +85,38 @@ public class WorldController extends InputAdapter{
 			spr.setOrigin(spr.getWidth()/2.0f, spr.getHeight()/2.0f);
 			
 			//Calculate random position for sprite
+			float randomX=MathUtils.random(-2.0f, 2.0f);
+			float randomY=MathUtils.random(-2.0f, 2.0f);
+			spr.setPosition(randomX, randomY);
+			
+			//Put new sprite into array
+			testSprites[i]=spr;
+		}
+		
+		//Set first sprite as selected one
+		selectedSprite=0;
+	}*/
+	
+	private void initTestObjects(){
+		//Create new array for 5 sprites
+		testSprites=new Sprite[5];
+		
+		
+		//Create a list of texture regions
+		Array<TextureRegion> regions=new Array<TextureRegion>();
+		regions.add(Assets.instance.bunny.head);
+		regions.add(Assets.instance.feather.feather);
+		regions.add(Assets.instance.goldCoin.goldCoin);
+		
+		//Create new sprites using a random texture region
+		for(int i=0; i<testSprites.length; i++){
+			Sprite spr=new Sprite(regions.random());
+			//Define sprite size to be 1m x 1m in game world
+			spr.setSize(1, 1);
+			//Set origin to sprite's center
+			spr.setOrigin(spr.getWidth()/2.0f, spr.getHeight()/2.0f);
+			
+			//Calculate ranom position for sprite
 			float randomX=MathUtils.random(-2.0f, 2.0f);
 			float randomY=MathUtils.random(-2.0f, 2.0f);
 			spr.setPosition(randomX, randomY);

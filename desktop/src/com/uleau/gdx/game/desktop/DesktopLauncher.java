@@ -7,7 +7,7 @@ import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker.Settings;
 
 public class DesktopLauncher {
-	static boolean rebuildAtlas=true;
+	static boolean rebuildAtlas=false;
 	static boolean drawDebugOutline=true;
 	
 	public static void main (String[] arg) {
@@ -17,10 +17,12 @@ public class DesktopLauncher {
 			settings.maxHeight=1024;
 			settings.duplicatePadding=false;
 			settings.debug=drawDebugOutline;
-			//TexturePacker.process(settings, "assets-raw/images","../core/assets/images","canyonbunny.pack");
+			TexturePacker.process(settings, "assets-raw/images", "../core/assets/images", "canyonbunny.pack");
 		}
 		
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
+		config.width=800;
+		config.height=480;
 		new LwjglApplication(new UleauGdxGame(), config);
 	}
 }

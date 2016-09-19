@@ -7,8 +7,8 @@ import com.badlogic.gdx.tools.texturepacker.TexturePacker;
 import com.badlogic.gdx.tools.texturepacker.TexturePacker.Settings;
 
 public class DesktopLauncher {
-	static boolean rebuildAtlas=false;
-	static boolean drawDebugOutline=true;
+	static boolean rebuildAtlas=true;
+	static boolean drawDebugOutline=false;
 	
 	public static void main (String[] arg) {
 		if(rebuildAtlas){
@@ -16,7 +16,7 @@ public class DesktopLauncher {
 			settings.maxWidth=1024;
 			settings.maxHeight=1024;
 			settings.duplicatePadding=false;
-			settings.debug=drawDebugOutline;
+			//settings.debug=drawDebugOutline;
 			TexturePacker.process(settings, "assets-raw/images", "../core/assets/images", "canyonbunny.pack");
 		}
 		

@@ -1,4 +1,4 @@
-package game;
+package com.uleau.gdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -11,10 +11,10 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.InputAdapter;
 
 import util.CameraHelper;
+import util.Constants;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
-import com.uleau.gdx.game.Assets;
 
 /**
  * @author Benjamin Uleau
@@ -22,10 +22,17 @@ import com.uleau.gdx.game.Assets;
  */
 public class WorldController extends InputAdapter{
 	private static final String TAG=WorldController.class.getName();
-	public Sprite[] testSprites;
-	public int selectedSprite;
+	//public Sprite[] testSprites;
+	//public int selectedSprite;
 	public CameraHelper cameraHelper;
 	private int selectedSprites;
+	public Level level;
+	public int lives;
+	public int score;
+	
+	private void initLevel(){
+		score=0; level=new Level(Constants.LEVEL_01);
+	}
 	
 	public WorldController(){
 		init();
@@ -34,11 +41,12 @@ public class WorldController extends InputAdapter{
 	private void init(){
 		Gdx.input.setInputProcessor(this);
 		cameraHelper=new CameraHelper();
-		initTestObjects();
+		//initTestObjects();
+		lives=Constants.LIVES_START;
+		initLevel();
 	}
 	
-	@Override
-	public boolean keyUp(int keycode){
+	/*public boolean keyUp(int keycode){
 		//Reset game world
 		if(keycode==Keys.R){
 			init();
@@ -59,6 +67,16 @@ public class WorldController extends InputAdapter{
 		else if(keycode==Keys.ENTER){
 			cameraHelper.setTarget(cameraHelper.hasTarget()?null:testSprites[selectedSprites]);
 			Gdx.app.debug(TAG, "Camera follow enabled: "+cameraHelper.hasTarget());
+		}
+		return false;
+	}*/
+	
+	@Override
+	public boolean keyUp(int keycode){
+		//Reset game world
+		if(keycode==Keys.R){
+			init();
+			Gdx.app.debug(TAG,  "Game world resetted");
 		}
 		return false;
 	}
@@ -97,7 +115,7 @@ public class WorldController extends InputAdapter{
 		selectedSprite=0;
 	}*/
 	
-	private void initTestObjects(){
+	/*private void initTestObjects(){
 		//Create new array for 5 sprites
 		testSprites=new Sprite[5];
 		
@@ -127,7 +145,7 @@ public class WorldController extends InputAdapter{
 		
 		//Set first sprite as selected one
 		selectedSprite=0;
-	}
+	}*/
 	
 	private Pixmap createProceduralPixmap(int width, int height){
 		Pixmap pixmap=new Pixmap(width, height, Format.RGBA8888);
@@ -147,14 +165,14 @@ public class WorldController extends InputAdapter{
 	
 	public void update(float deltaTime){
 		handleDebugInput(deltaTime);
-		updateTestObjects(deltaTime);
+		//updateTestObjects(deltaTime);
 		cameraHelper.update(deltaTime);
 	}
 	
 	private void handleDebugInput(float deltaTime){
 		if(Gdx.app.getType()!=ApplicationType.Desktop) return;
 		
-		//Selected Sprite Controls
+		/*//Selected Sprite Controls
 		float sprMoveSpeed=5*deltaTime;
 		
 		if(Gdx.input.isKeyPressed(Keys.A))
@@ -164,7 +182,7 @@ public class WorldController extends InputAdapter{
 		if(Gdx.input.isKeyPressed(Keys.W))
 			moveSelectedSprite(0, sprMoveSpeed);
 		if(Gdx.input.isKeyPressed(Keys.S))
-			moveSelectedSprite(0, -sprMoveSpeed);
+			moveSelectedSprite(0, -sprMoveSpeed);*/
 		
 		//Camera Controls (move)
 		float camMoveSpeed=5*deltaTime;
@@ -202,12 +220,12 @@ public class WorldController extends InputAdapter{
 		cameraHelper.setPosition(x, y);
 	}
 	
-	private void moveSelectedSprite(float x, float y){
+	/*private void moveSelectedSprite(float x, float y){
 		testSprites[selectedSprite].translate(x, y);
-	}
+	}*/
 	
 	//This is a test method I'm playing with
-	private void updateTestObjects2(float deltaTime){
+	/*private void updateTestObjects2(float deltaTime){
 		//Get current roatation from selected sprite
 		for(Sprite s : testSprites){
 			float rotation=s.getRotation();
@@ -218,9 +236,9 @@ public class WorldController extends InputAdapter{
 			//Set new rotation value to selected sprite
 			s.setRotation(rotation);
 		}
-	}
+	}*/
 	
-	private void updateTestObjects(float deltaTime){
+	/*private void updateTestObjects(float deltaTime){
 		//Get current rotation from selected sprite
 		float rotation=testSprites[selectedSprite].getRotation();
 		//Rotate sprite by 90 degrees per second
@@ -229,5 +247,5 @@ public class WorldController extends InputAdapter{
 		rotation%=360;
 		//Set new rotation value to selected sprite
 		testSprites[selectedSprite].setRotation(rotation);
-	}
+	}*/
 }

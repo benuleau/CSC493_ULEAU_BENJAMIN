@@ -1,8 +1,5 @@
 package com.uleau.gdx.game;
 
-import game.WorldController;
-import game.WorldRenderer;
-
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.ApplicationListener;

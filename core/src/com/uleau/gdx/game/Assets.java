@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 
 /**
@@ -30,6 +31,8 @@ public class Assets implements Disposable, AssetErrorListener{
 	public AssetGoldCoin goldCoin;
 	public AssetFeather feather;
 	public AssetLevelDecoration levelDecoration;
+	
+	public AssetFonts fonts;
 	
 	public void init(AssetManager assetManager){
 		this.assetManager=assetManager;
@@ -56,6 +59,7 @@ public class Assets implements Disposable, AssetErrorListener{
 		}
 		
 		//Create game resource objects
+		fonts=new AssetFonts();
 		bunny=new AssetBunny(atlas);
 		rock=new AssetRock(atlas);
 		goldCoin=new AssetGoldCoin(atlas);
@@ -67,6 +71,9 @@ public class Assets implements Disposable, AssetErrorListener{
 	@Override
 	public void dispose() {
 		assetManager.dispose();
+		fonts.defaultSmall.dispose();
+		fonts.defaultNormal.dispose();
+		fonts.defaultBig.dispose();
 	}
 	
 	public void error(String filename, Class type, Throwable throwable) {
@@ -131,4 +138,50 @@ public class Assets implements Disposable, AssetErrorListener{
 			waterOverlay=atlas.findRegion("water_overlay");
 		}
 	}
+	
+	public class AssetFonts{
+		public final BitmapFont defaultSmall;
+		public final BitmapFont defaultNormal;
+		public final BitmapFont defaultBig;
+		
+		public AssetFonts(){
+			//Create three fonts using libgdx's 15px bitmap font
+			//defaultSmall=new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
+			//defaultNormal=new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
+			//defaultBig=new BitmapFont(Gdx.files.internal("Images/arial-15.fnt"), true);
+			
+			defaultSmall=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
+			defaultNormal=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
+			defaultBig=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
+
+			
+			//Set font sizes
+			defaultSmall.getData().setScale(.75f);
+			defaultNormal.getData().setScale(1.0f);
+			defaultBig.getData().setScale(2.0f);
+			
+			//Enable linear texture filtering for smooth fonts
+			defaultSmall.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+			defaultNormal.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+			defaultBig.getRegion().getTexture().setFilter(TextureFilter.Linear, TextureFilter.Linear);
+			
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

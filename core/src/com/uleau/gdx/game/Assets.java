@@ -146,13 +146,13 @@ public class Assets implements Disposable, AssetErrorListener{
 		
 		public AssetFonts(){
 			//Create three fonts using libgdx's 15px bitmap font
-			//defaultSmall=new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
-			//defaultNormal=new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
-			//defaultBig=new BitmapFont(Gdx.files.internal("Images/arial-15.fnt"), true);
+			defaultSmall=new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
+			defaultNormal=new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
+			defaultBig=new BitmapFont(Gdx.files.internal("Images/arial-15.fnt"), true);
 			
-			defaultSmall=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
-			defaultNormal=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
-			defaultBig=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
+			//defaultSmall=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
+			//defaultNormal=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
+			//defaultBig=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
 
 			
 			//Set font sizes

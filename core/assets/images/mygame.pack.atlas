@@ -1,0 +1,90 @@
+
+mygame.pack.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Ax
+  rotate: false
+  xy: 2, 2
+  size: 269, 220
+  orig: 269, 220
+  offset: 0, 0
+  index: -1
+Cloud
+  rotate: false
+  xy: 407, 503
+  size: 110, 70
+  orig: 110, 70
+  offset: 0, 0
+  index: -1
+GroundTile
+  rotate: false
+  xy: 407, 575
+  size: 190, 50
+  orig: 190, 50
+  offset: 0, 0
+  index: -1
+Log
+  rotate: false
+  xy: 706, 636
+  size: 139, 189
+  orig: 139, 189
+  offset: 0, 0
+  index: -1
+Log-left
+  rotate: false
+  xy: 273, 32
+  size: 70, 190
+  orig: 70, 190
+  offset: 0, 0
+  index: -1
+Log-right
+  rotate: false
+  xy: 335, 404
+  size: 70, 190
+  orig: 70, 190
+  offset: 0, 0
+  index: -1
+OilCan
+  rotate: false
+  xy: 847, 665
+  size: 139, 160
+  orig: 139, 160
+  offset: 0, 0
+  index: -1
+Rock
+  rotate: false
+  xy: 706, 827
+  size: 280, 160
+  orig: 280, 160
+  offset: 0, 0
+  index: -1
+Tree
+  rotate: false
+  xy: 2, 224
+  size: 331, 370
+  orig: 331, 370
+  offset: 0, 0
+  index: -1
+Tree-Layer2
+  rotate: false
+  xy: 2, 596
+  size: 390, 391
+  orig: 390, 391
+  offset: 0, 0
+  index: -1
+Tree-Layer3
+  rotate: false
+  xy: 394, 627
+  size: 310, 360
+  orig: 310, 360
+  offset: 0, 0
+  index: -1
+Water
+  rotate: false
+  xy: 335, 338
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1

@@ -17,7 +17,7 @@ public class DesktopLauncher {
 			settings.maxHeight=1024;
 			settings.duplicatePadding=false;
 			//settings.debug=drawDebugOutline;
-			TexturePacker.process(settings, "assets-raw/images", "../core/assets/images", "canyonbunny.pack");
+			TexturePacker.process(settings, "assets-raw/images", "../core/assets/images", "mygame.pack");
 		}
 		
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();

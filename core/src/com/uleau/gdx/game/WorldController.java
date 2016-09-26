@@ -1,4 +1,4 @@
-package game;
+package com.uleau.gdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
@@ -14,7 +14,6 @@ import util.CameraHelper;
 
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
-import com.uleau.gdx.game.Assets;
 
 /**
  * @author Benjamin Uleau

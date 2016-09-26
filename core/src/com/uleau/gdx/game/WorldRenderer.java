@@ -1,4 +1,4 @@
-package game;
+package com.uleau.gdx.game;
 
 import util.Constants;
 

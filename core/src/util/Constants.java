@@ -12,9 +12,10 @@ public class Constants {
 	public static final float VIEWPORT_HEIGHT=5.0f;
 	
 	//Location of description file for texture atlas
-	public static final String TEXTURE_ATLAS_OBJECTS="images/mygame.pack.atlas";
-	//public static final String TEXTURE_ATLAS_OBJECTS="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/canyonbunny.pack.atlas";
+	//public static final String TEXTURE_ATLAS_OBJECTS="images/mygame.pack.atlas";
+	public static final String TEXTURE_ATLAS_OBJECTS="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/mygame.pack.atlas";
 	
 	//Location of image file for level 01
-	public static final String LEVEL_01="levels/level-01.png";
+	//public static final String LEVEL_01="levels/level-01.png";
+	public static final String LEVEL_01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/levels/level-01.png";
 }

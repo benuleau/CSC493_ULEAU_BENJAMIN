@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 
 /**
@@ -21,6 +22,8 @@ public class Assets implements Disposable, AssetErrorListener{
 	public static final String TAG=Assets.class.getName();
 	public static final Assets instance=new Assets();
 	private AssetManager assetManager;
+	
+	public AssetFonts fonts;
 	
 	//singleton: prevent instantiation from other classes
 	private Assets(){}
@@ -63,6 +66,7 @@ public class Assets implements Disposable, AssetErrorListener{
 		}
 		
 		//Create game resource objects
+		fonts=new AssetFonts();
 		ax=new AssetAx(atlas);
 		ground=new AssetGround(atlas);
 		log=new AssetLog(atlas);
@@ -80,6 +84,9 @@ public class Assets implements Disposable, AssetErrorListener{
 	@Override
 	public void dispose() {
 		assetManager.dispose();
+		fonts.defaultSmall.dispose();
+		fonts.defaultNormal.dispose();
+		fonts.defaultBig.dispose();
 	}
 	
 	public void error(String filename, Class type, Throwable throwable) {
@@ -176,21 +183,36 @@ public class Assets implements Disposable, AssetErrorListener{
 		}
 	}
 	
-	/*public class AssetLevelDecoration{
-		public final AtlasRegion cloud01;
-		public final AtlasRegion cloud02;
-		public final AtlasRegion cloud03;
-		public final AtlasRegion mountainLeft;
-		public final AtlasRegion mountainRight;
-		public final AtlasRegion waterOverlay;
+	public class AssetFonts {
+		public final BitmapFont defaultSmall;
+		public final BitmapFont defaultNormal;
+		public final BitmapFont defaultBig;
+		public AssetFonts () {
+			// create three fonts using Libgdx's 15px bitmap font
 		
-		public AssetLevelDecoration(TextureAtlas atlas){
-			cloud01=atlas.findRegion("cloud01");
-			cloud02=atlas.findRegion("cloud02");
-			cloud03=atlas.findRegion("cloud03");
-			mountainLeft=atlas.findRegion("mountain_left");
-			mountainRight=atlas.findRegion("mountain_right");
-			waterOverlay=atlas.findRegion("water_overlay");
+			/*defaultSmall = new BitmapFont(
+			Gdx.files.internal("images/arial-15.fnt"), true);
+			defaultNormal = new BitmapFont(
+			Gdx.files.internal("images/arial-15.fnt"), true);
+			defaultBig = new BitmapFont(
+			Gdx.files.internal("images/arial-15.fnt"), true);*/
+			
+			defaultSmall=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
+			defaultNormal=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
+			defaultBig=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
+
+			// set font sizes
+			defaultSmall.getData().setScale(0.75f);
+			defaultNormal.getData().setScale(1.0f);
+			defaultBig.getData().setScale(2.0f);
+			
+			// enable linear texture filtering for smooth fonts
+			defaultSmall.getRegion().getTexture().setFilter(
+			TextureFilter.Linear, TextureFilter.Linear);
+			defaultNormal.getRegion().getTexture().setFilter(
+			TextureFilter.Linear, TextureFilter.Linear);
+			defaultBig.getRegion().getTexture().setFilter(
+			TextureFilter.Linear, TextureFilter.Linear);
 		}
-	}*/
+	}
 }

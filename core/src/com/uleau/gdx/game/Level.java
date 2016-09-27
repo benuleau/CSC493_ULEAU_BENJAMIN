@@ -10,10 +10,11 @@ public class Level {
 	
 	public enum BLOCK_TYPE{
 		EMPTY(0, 255, 255), //cyan
-		ROCK(0, 0, 0), //black
+		GROUND(0, 0, 0), //black
 		PLAYER_SPAWNPOINT(255, 255, 255), //white
-		ITEM_FEATHER(255, 0, 0), //red
-		ITEM_GOLD_COIN(255, 255, 0); //yellow
+		ITEM_LOG(255, 255, 0), //yellow
+		ITEM_OIL(0, 255, 0), //green
+		ITEM_ROCK(255, 0, 0); //red
 		
 		private int color;
 		
@@ -31,12 +32,12 @@ public class Level {
 	}
 	
 	//objects
-	public Array<Rock> rocks;
+	public Array<GroundTile> ground;
 	
 	//Decoration
-	public Clouds clouds;
-	public Mountains mountains;
-	public WaterOverlay waterOverlay;
+	public Cloud clouds;
+	public Tree tree;
+	public Water water;
 	
 	public Level(String filename){
 		init(filename);
@@ -44,7 +45,7 @@ public class Level {
 	
 	private void init(String filename){
 		//objects
-		rocks=new Array<Rock>();
+		ground=new Array<GroundTile>();
 		
 		//load image file that represents the level data
 		Pixmap pixmap=new Pixmap(Gdx.files.internal(filename));
@@ -68,27 +69,31 @@ public class Level {
 					//do nothing
 				}
 				//rock
-				else if(BLOCK_TYPE.ROCK.sameColor(currentPixel)){
+				else if(BLOCK_TYPE.GROUND.sameColor(currentPixel)){
 					if(lastPixel!=currentPixel){
-						obj=new Rock();
+						obj=new GroundTile();
 						float heightIncreaseFactor=0.25f;
 						offsetHeight=-2.5f;
 						obj.position.set(pixelX, baseHeight*obj.dimension.y*heightIncreaseFactor+offsetHeight);
-						rocks.add((Rock)obj);
+						ground.add((GroundTile)obj);
 					}else{
-						rocks.get(rocks.size-1).increaseLength(1);;
+						ground.get(ground.size-1).increaseLength(1);;
 					}
 				}
 				//player spawn point
 				else if(BLOCK_TYPE.PLAYER_SPAWNPOINT.sameColor(currentPixel)){
 					
 				}
-				//Feather
-				else if(BLOCK_TYPE.ITEM_FEATHER.sameColor(currentPixel)){
+				//Log
+				else if(BLOCK_TYPE.ITEM_LOG.sameColor(currentPixel)){
 					
 				}
-				//Gold coin
-				else if(BLOCK_TYPE.ITEM_GOLD_COIN.sameColor(currentPixel)){
+				//Rock
+				else if(BLOCK_TYPE.ITEM_ROCK.sameColor(currentPixel)){
+					
+				}
+				//Oil
+				else if(BLOCK_TYPE.ITEM_OIL.sameColor(currentPixel)){
 					
 				}
 				//Unknown object/pixel color
@@ -105,12 +110,14 @@ public class Level {
 		}
 		
 		//decoration
-		clouds=new Clouds(pixmap.getWidth());
+		clouds=new Cloud();
+		clouds.setLength(pixmap.getWidth());
+		
 		clouds.position.set(0, 2);
-		mountains=new Mountains(pixmap.getWidth());
-		mountains.position.set(-1, -1);
-		waterOverlay=new WaterOverlay(pixmap.getWidth());
-		waterOverlay.position.set(0, -3.75f);
+		tree=new Tree(pixmap.getWidth());
+		tree.position.set(-1, -1);
+		water=new Water(pixmap.getWidth());
+		water.position.set(0, -3.75f);
 		
 		//Free memory
 		pixmap.dispose();
@@ -118,19 +125,20 @@ public class Level {
 	}
 	
 	public void render(SpriteBatch batch){
-		//Draw mountains
-		mountains.render(batch);
+		//Draw Trees
+		tree.render(batch);
 		
-		//Draw rocks
-		for(Rock rock : rocks){
-			rock.render(batch);
+		//Draw ground
+		for(GroundTile ground : ground){
+			ground.render(batch);
 		}
 		
 		//Draw water overlay
-		waterOverlay.render(batch);
+		water.render(batch);
+		
 		
 		//Draw clouds
-		clouds.render(batch);;
+		//clouds.render(batch);;
 	}
 	
 	

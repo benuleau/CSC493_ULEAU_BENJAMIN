@@ -49,6 +49,7 @@ public class Tree extends AbstractGameObject{
 	}
 	
 	public void render(SpriteBatch batch){
+		drawTrees(batch, 0.15f, 0.15f);
 		//Draw layer1		
 		drawTrees(batch, 0.5f, 0.5f);
 		//Draw layer2

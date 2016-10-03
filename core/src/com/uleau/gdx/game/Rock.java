@@ -32,7 +32,7 @@ public class Rock extends AbstractGameObject{
 	public void render (SpriteBatch batch) {
 		TextureRegion reg = null;
 		float relX = 0;
-		float relY = 0;
+		float relY = (float) -4.5;
 		
 		// Draw left edge
 		reg = regEdge;

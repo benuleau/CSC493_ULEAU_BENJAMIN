@@ -1,8 +1,10 @@
-package com.uleau.gdx.game;
+package objects;
 
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.uleau.gdx.game.AbstractGameObject;
+import com.uleau.gdx.game.Assets;
 
 public class WaterOverlay extends AbstractGameObject{
 	private TextureRegion regWaterOverlay;
@@ -22,8 +24,10 @@ public class WaterOverlay extends AbstractGameObject{
 	
 	@Override
 	public void render(SpriteBatch batch){
+		float relX=0;
+		float relY=5;
 		TextureRegion reg=null;
 		reg=regWaterOverlay;
-		batch.draw(reg.getTexture(), position.x + origin.x, position.y+ origin.y, origin.x, origin.y, dimension.x, dimension.y, scale.x,scale.y, rotation, reg.getRegionX(), reg.getRegionY(),reg.getRegionWidth(), reg.getRegionHeight(), false, false);
+		batch.draw(reg.getTexture(), position.x + origin.x+relX, position.y+relY+ origin.y, origin.x, origin.y, dimension.x, dimension.y, scale.x,scale.y, rotation, reg.getRegionX(), reg.getRegionY(),reg.getRegionWidth(), reg.getRegionHeight(), false, false);
 	}
 }

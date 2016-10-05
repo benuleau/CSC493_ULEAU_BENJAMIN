@@ -1,10 +1,12 @@
-package com.uleau.gdx.game;
+package objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.uleau.gdx.game.AbstractGameObject;
+import com.uleau.gdx.game.Assets;
 
 public class Clouds extends AbstractGameObject{
 	private float length;
@@ -24,7 +26,9 @@ public class Clouds extends AbstractGameObject{
 		@Override
 		public void render(SpriteBatch batch){
 			TextureRegion reg=regCloud;
-			batch.draw(reg.getTexture(), position.x + origin.x,position.y + origin.y, origin.x, origin.y, dimension.x,dimension.y, scale.x, scale.y, rotation, reg.getRegionX(),reg.getRegionY(), reg.getRegionWidth(), reg.getRegionHeight(),false, false);
+			float relX=0;
+			float relY=5.5f;
+			batch.draw(reg.getTexture(), position.x + origin.x+relX,position.y + origin.y+relY, origin.x, origin.y, dimension.x,dimension.y, scale.x, scale.y, rotation, reg.getRegionX(),reg.getRegionY(), reg.getRegionWidth(), reg.getRegionHeight(),false, false);
 		}
 	}
 	

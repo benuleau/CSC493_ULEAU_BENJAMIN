@@ -1,7 +1,9 @@
-package com.uleau.gdx.game;
+package objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.uleau.gdx.game.AbstractGameObject;
+import com.uleau.gdx.game.Assets;
 
 public class Rock extends AbstractGameObject{
 	private TextureRegion regEdge;
@@ -22,6 +24,9 @@ public class Rock extends AbstractGameObject{
 	
 	public void setLength (int length) {
 		this.length = length;
+		
+		//Update bounding box for collision detection
+		bounds.set(0, 0, dimension.x*length, dimension.y);
 	}
 	
 	public void increaseLength (int amount) {
@@ -32,7 +37,8 @@ public class Rock extends AbstractGameObject{
 	public void render (SpriteBatch batch) {
 		TextureRegion reg = null;
 		float relX = 0;
-		float relY = (float) -4.5;
+		//float relY = -4.5f;
+		float relY=0;
 		
 		// Draw left edge
 		reg = regEdge;

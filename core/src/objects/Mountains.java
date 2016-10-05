@@ -1,8 +1,10 @@
-package com.uleau.gdx.game;
+package objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.uleau.gdx.game.AbstractGameObject;
+import com.uleau.gdx.game.Assets;
 
 public class Mountains extends AbstractGameObject{
 	private TextureRegion regMountainLeft;
@@ -30,7 +32,7 @@ public class Mountains extends AbstractGameObject{
 		TextureRegion reg = null;
 		batch.setColor(tintColor, tintColor, tintColor, 1);
 		float xRel = dimension.x * offsetX;
-		float yRel = dimension.y * offsetY;
+		float yRel = (dimension.y * offsetY)+5;
 		// mountains span the whole level
 		int mountainLength = 0;
 		mountainLength += MathUtils.ceil(length / (2 * dimension.x));

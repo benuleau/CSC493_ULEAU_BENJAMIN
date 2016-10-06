@@ -1,7 +1,9 @@
-package com.uleau.gdx.game;
+package Objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.uleau.gdx.game.AbstractGameObject;
+import com.uleau.gdx.game.Assets;
 
 public class Water extends AbstractGameObject{
 	private TextureRegion regWater;

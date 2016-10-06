@@ -1,8 +1,10 @@
-package com.uleau.gdx.game;
+package Objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.MathUtils;
+import com.uleau.gdx.game.AbstractGameObject;
+import com.uleau.gdx.game.Assets;
 
 public class Tree extends AbstractGameObject{
 	private TextureRegion regTreeL1;
@@ -24,8 +26,8 @@ public class Tree extends AbstractGameObject{
 	
 	private void drawTrees (SpriteBatch batch, float offsetX, float offsetY) {
 		TextureRegion reg = null;
-		float xRel = dimension.x * offsetX;
-		float yRel = dimension.y * offsetY;
+		float xRel = (dimension.x * offsetX)+0;
+		float yRel = (dimension.y * offsetY)+10;
 		// Trees span the whole level
 		int treeLength = 0;
 		treeLength += MathUtils.ceil(length / (2 * dimension.x));
@@ -49,10 +51,10 @@ public class Tree extends AbstractGameObject{
 	}
 	
 	public void render(SpriteBatch batch){
-		drawTrees(batch, 0.15f, 0.15f);
-		//Draw layer1		
-		drawTrees(batch, 0.5f, 0.5f);
+	//	drawTrees(batch, 0.15f, 0.15f);
+		//Draw layer1	
+	//	drawTrees(batch, 0.30f, 0.30f);
 		//Draw layer2
-		drawTrees(batch, 0.75f, 0.75f);
+	//	drawTrees(batch, 0.45f, 0.45f);
 	}
 }

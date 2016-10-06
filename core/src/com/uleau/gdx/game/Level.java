@@ -5,10 +5,10 @@ import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 
-import Objects.Cloud;
-import Objects.GroundTile;
-import Objects.Tree;
-import Objects.Water;
+import objects.Cloud;
+import objects.GroundTile;
+import objects.Tree;
+import objects.Water;
 
 public class Level {
 	public static final String TAG=Level.class.getName();

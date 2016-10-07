@@ -26,4 +26,10 @@ public class Constants {
 
 	//Amount of extra lives at level start
 	public static final int LIVES_START=3;
+	
+	//Duration of the oil power-up in seconds
+	public static final float ITEM_OIL_POWERUP_DURATION=9;
+	
+	//Delay after game over
+	public static final float TIME_DELAY_GAME_OVER=3;
 }

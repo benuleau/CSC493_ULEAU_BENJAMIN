@@ -6,36 +6,25 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Array;
 
 import objects.Cloud;
-import objects.Tree;
 import objects.GroundTile;
+import objects.Tree;
 import objects.Water;
+
 import objects.Ax;
-import objects.OilCan;
 import objects.Log;
+import objects.OilCan;
 import objects.Rock;
 
-public class Level {
+public class Level_old {
 	public static final String TAG=Level.class.getName();
-	
-	//objects
-	public Array<GroundTile> ground;
-		
-	public Ax ax;
-	public Array<Log> logs;
-	public Array<OilCan> oils;
-		
-	//Decoration
-	public Cloud clouds;
-	public Tree tree;
-	public Water water;
 	
 	public enum BLOCK_TYPE{
 		EMPTY(0, 255, 255), //cyan
 		GROUND(0, 0, 0), //black
 		PLAYER_SPAWNPOINT(255, 255, 255), //white
-		ITEM_ROCK(255, 0, 0), //red
+		ITEM_LOG(255, 255, 0), //yellow
 		ITEM_OIL(0, 255, 0), //green
-		ITEM_LOG(255, 255, 0); //yellow
+		ITEM_ROCK(255, 0, 0); //red
 		
 		private int color;
 		
@@ -52,19 +41,21 @@ public class Level {
 		}
 	}
 	
-	public Level(String filename){
+	//objects
+	public Array<GroundTile> ground;
+	
+	//Decoration
+	public Cloud clouds;
+	public Tree tree;
+	public Water water;
+	
+	public Level_old(String filename){
 		init(filename);
 	}
 	
 	private void init(String filename){
-		//Player character
-		ax=null;
-		
 		//objects
 		ground=new Array<GroundTile>();
-		
-		logs=new Array<Log>();
-		oils=new Array<OilCan>();
 		
 		//load image file that represents the level data
 		Pixmap pixmap=new Pixmap(Gdx.files.internal(filename));
@@ -87,7 +78,7 @@ public class Level {
 				if(BLOCK_TYPE.EMPTY.sameColor(currentPixel)){
 					//do nothing
 				}
-				//Ground
+				//rock
 				else if(BLOCK_TYPE.GROUND.sameColor(currentPixel)){
 					if(lastPixel!=currentPixel){
 						obj=new GroundTile();
@@ -101,24 +92,19 @@ public class Level {
 				}
 				//player spawn point
 				else if(BLOCK_TYPE.PLAYER_SPAWNPOINT.sameColor(currentPixel)){
-					obj=new Ax();
-					offsetHeight=-3.0f;
-					obj.position.set(pixelX, baseHeight*obj.dimension.y+offsetHeight);
-					ax=(Ax)obj;
+					
 				}
-				//Feather
-				else if(BLOCK_TYPE.ITEM_OIL.sameColor(currentPixel)){
-					obj=new OilCan();
-					offsetHeight=-1.5f;
-					obj.position.set(pixelX, baseHeight*obj.dimension.y+offsetHeight);
-					oils.add((OilCan)obj);
-				}
-				//Gold coin
+				//Log
 				else if(BLOCK_TYPE.ITEM_LOG.sameColor(currentPixel)){
-					obj=new Log();
-					offsetHeight=-1.5f;
-					obj.position.set(pixelX, baseHeight*obj.dimension.y+offsetHeight);
-					logs.add((Log)obj);
+					
+				}
+				//Rock
+				else if(BLOCK_TYPE.ITEM_ROCK.sameColor(currentPixel)){
+					
+				}
+				//Oil
+				else if(BLOCK_TYPE.ITEM_OIL.sameColor(currentPixel)){
+					
 				}
 				//Unknown object/pixel color
 				else{
@@ -136,55 +122,58 @@ public class Level {
 		//decoration
 		clouds=new Cloud();
 		clouds.setLength(pixmap.getWidth());
-			
+		
 		clouds.position.set(0, 2);
 		tree=new Tree(pixmap.getWidth());
 		tree.position.set(-1, -1);
 		water=new Water(pixmap.getWidth());
 		water.position.set(0, -3.75f);
-				
+		
 		//Free memory
 		pixmap.dispose();
 		Gdx.app.debug(TAG,  "level '"+filename+"' loaded");
 	}
 	
 	public void render(SpriteBatch batch){
-		//Draw mountains
+		//Draw Trees
 		tree.render(batch);
 		
-		//Draw rocks
-		for(GroundTile g : ground){
-			g.render(batch);
+		//Draw ground
+		for(GroundTile ground : ground){
+			ground.render(batch);
 		}
-		
-		//Draw Gold Coins
-		for(Log log : logs){
-			log.render(batch);
-		}
-				
-		//Draw Feathers
-		for(OilCan oil : oils){
-			oil.render(batch);
-		}
-				
-		//Draw Player Character
-		ax.render(batch);
 		
 		//Draw water overlay
 		water.render(batch);
+		
 		
 		//Draw clouds
 		//clouds.render(batch);;
 	}
 	
-	public void update(float deltaTime){
-		ax.update(deltaTime);
-		for(GroundTile g : ground)
-			g.update(deltaTime);
-		for(Log log : logs)
-			log.update(deltaTime);
-		for(OilCan oil : oils)
-			oil.update(deltaTime);
-		clouds.update(deltaTime);
-	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

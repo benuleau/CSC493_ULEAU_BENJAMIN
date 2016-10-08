@@ -23,7 +23,8 @@ public class Level {
 	public Ax ax;
 	public Array<Log> logs;
 	public Array<OilCan> oils;
-		
+	public Array<Rock> rocks;
+	
 	//Decoration
 	public Cloud clouds;
 	public Tree tree;
@@ -65,6 +66,7 @@ public class Level {
 		
 		logs=new Array<Log>();
 		oils=new Array<OilCan>();
+		rocks=new Array<Rock>();
 		
 		//load image file that represents the level data
 		Pixmap pixmap=new Pixmap(Gdx.files.internal(filename));
@@ -120,6 +122,12 @@ public class Level {
 					obj.position.set(pixelX, baseHeight*obj.dimension.y+offsetHeight);
 					logs.add((Log)obj);
 				}
+				//Rock
+				else if(BLOCK_TYPE.ITEM_ROCK.sameColor(currentPixel)){
+					obj=new Rock();
+					offsetHeight=-1.5f;
+					obj.position.set(pixelX, baseHeight*obj.dimension.y+offsetHeight);
+				}
 				//Unknown object/pixel color
 				else{
 					int r=0xff & (currentPixel>>>24); //Red color channel
@@ -152,26 +160,33 @@ public class Level {
 		//Draw mountains
 		tree.render(batch);
 		
-		//Draw rocks
+		//Draw Ground tiles
 		for(GroundTile g : ground){
 			g.render(batch);
 		}
 		
-		//Draw Gold Coins
+		//Draw Logs
 		for(Log log : logs){
 			log.render(batch);
 		}
 				
-		//Draw Feathers
+		//Draw Oils
 		for(OilCan oil : oils){
 			oil.render(batch);
 		}
 				
-		//Draw Player Character
+		//Draw Ax
 		ax.render(batch);
 		
+		//Draw rocks
+		for(Rock rock : rocks){
+			rock.render(batch);
+		}
+				
 		//Draw water overlay
 		water.render(batch);
+		
+		
 		
 		//Draw clouds
 		//clouds.render(batch);;
@@ -185,6 +200,8 @@ public class Level {
 			log.update(deltaTime);
 		for(OilCan oil : oils)
 			oil.update(deltaTime);
+		for(Rock rock : rocks)
+			rock.update(deltaTime);
 		clouds.update(deltaTime);
 	}
 }

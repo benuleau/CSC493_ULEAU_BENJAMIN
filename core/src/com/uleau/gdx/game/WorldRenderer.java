@@ -114,13 +114,46 @@ public class WorldRenderer implements Disposable {
 		batch.begin();
 		// draw collected logs icon + text (anchored to top left edge)
 		renderGuiScore(batch);
+		//Draw collected oil icon (anchored to top left edge)
+		renderGuiOilPowerup(batch);
 		// draw extra lives icon + text (anchored to top right edge)
 		renderGuiExtraLive(batch);
 		// draw FPS text (anchored to bottom right edge)
 		renderGuiFpsCounter(batch);
+		//Draw game over text
+		renderGuiGameOverMessage(batch);
 		batch.end();
 	}
 	
+	private void renderGuiGameOverMessage(SpriteBatch batch){
+		float x=cameraGUI.viewportWidth/2;
+		float y=cameraGUI.viewportHeight/2;
+		if(worldController.isGameOver()){
+			BitmapFont fontGameOver=Assets.instance.fonts.defaultBig;
+			fontGameOver.setColor(1, 0.75f, 0.25f, 1);
+			//fontGameOver.drawMultiLine(batch, "GAME OVER", x, y, 0, BitmapFont.HAlignment.CENTER);		//No longer supported, replaced with next line
+			fontGameOver.draw(batch, "GAME OVER", x, y);
+			fontGameOver.setColor(1, 1, 1, 1);
+		}
+	}
+	
+	private void renderGuiOilPowerup(SpriteBatch batch){
+		float x=-15;
+		float y=30;
+		float timeLeftFeatherPowerup=worldController.level.ax.timeLeftOilPowerup;
+		if(timeLeftFeatherPowerup>0){
+			//Start icon fade in / out if the left power-up time is less than 4 seconds.
+			//The fade interval is set to 5 changes per seconds
+			if(timeLeftFeatherPowerup<4){
+				if(((int)(timeLeftFeatherPowerup*5)%2)!=0){
+					batch.setColor(1, 1, 1, 0.5f);
+				}
+			}
+			batch.draw(Assets.instance.oil.oil, x, y, 50, 50, 100, 100, 0.35f, -0.35f, 0);
+			batch.setColor(1, 1, 1, 1);
+			Assets.instance.fonts.defaultSmall.draw(batch, ""+(int)timeLeftFeatherPowerup, x+60, y+57);
+		}
+	}
 	@Override public void dispose(){
 		batch.dispose();
 	}

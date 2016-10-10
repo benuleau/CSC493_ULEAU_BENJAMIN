@@ -30,4 +30,12 @@ public class Constants {
 	
 	//Delay after game over
 	public static final float TIME_DELAY_GAME_OVER=3;
+	
+	public static final String TEXTURE_ATLAS_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/game-ui-pack.atlas";
+	public static final String TEXTURE_ATLAS_LIBGDX_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/uiskin.atlas";
+	//Location of description file for skins
+	public static final String SKIN_LIBGDX_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/uiskin.json";
+	public static final String SKIN_CANYONBUNNY_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/game-ui.json";
+	
+	public static final String PREFERENCES="canyonbunny.preferences";
 }

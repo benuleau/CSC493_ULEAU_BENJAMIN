@@ -5,6 +5,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.uleau.gdx.game.AbstractGameObject;
 import com.uleau.gdx.game.Assets;
 import util.Constants;
+import util.CharacterSkin;
+import util.GamePreferences;
 
 public class Ax extends AbstractGameObject{
 	public static final String TAG=Ax.class.getName();
@@ -136,6 +138,10 @@ public class Ax extends AbstractGameObject{
 	@Override
 	public void render (SpriteBatch batch) {
 		TextureRegion reg = null;
+		
+		//Apply skin color
+		batch.setColor(CharacterSkin.values()[GamePreferences.instance.charSkin].getColor());
+		
 		// Set special color when game object has a feather power-up
 		float relX = 0;
 		//float relY = -4.5f;

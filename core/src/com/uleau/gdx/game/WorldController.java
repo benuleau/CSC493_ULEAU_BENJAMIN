@@ -24,6 +24,9 @@ import util.Constants;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Array;
 
+import com.badlogic.gdx.Game;
+import screens.MenuScreen;
+
 /**
  * @author Benjamin Uleau
  *
@@ -44,13 +47,16 @@ public class WorldController extends InputAdapter{
 	
 	private float timeLeftGameOverDelay;
 	
+	private Game game;
+	
 	private void initLevel(){
 		score=0; 
 		level=new Level(Constants.LEVEL_01);
 		cameraHelper.setTarget(level.ax);
 	}
 	
-	public WorldController(){
+	public WorldController(Game game){
+		this.game=game;
 		init();
 	}
 	
@@ -69,12 +75,15 @@ public class WorldController extends InputAdapter{
 		if(keycode==Keys.R){
 			init();
 			Gdx.app.debug(TAG,  "Game world resetted");
-		}
-		
+		}	
 		//Toggle camera follow
 		else if(keycode==Keys.ENTER){
 			cameraHelper.setTarget(cameraHelper.hasTarget() ? null : level.ax);
 			Gdx.app.debug(TAG, "Camera follow enabled: "+cameraHelper.hasTarget());
+		}
+		//Back to menu
+		else if(keycode==Keys.ESCAPE || keycode==Keys.BACK){
+			backToMenu();
 		}
 		return false;
 	}
@@ -122,7 +131,7 @@ public class WorldController extends InputAdapter{
 		handleDebugInput(deltaTime);
 		if(isGameOver()){
 			timeLeftGameOverDelay-=deltaTime;
-			if(timeLeftGameOverDelay<0) init();
+			if(timeLeftGameOverDelay<0) backToMenu();
 		}else{
 			handleInputGame(deltaTime);
 		}
@@ -268,5 +277,10 @@ public class WorldController extends InputAdapter{
 	
 	public boolean isPlayerInWater(){
 		return level.ax.position.y<-5;
+	}
+	
+	private void backToMenu(){
+		//Switch to menu screen
+		game.setScreen(new MenuScreen(game));
 	}
 }

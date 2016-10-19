@@ -32,6 +32,7 @@ public class Constants {
 	/***********************
 	 * RELATIVE CLASSPATHS *
 	 ***********************/
+	/*
 	//Location of description file for texture atlas
 	public static final String TEXTURE_ATLAS_OBJECTS="images/canyonbunny.pack.atlas";
 	
@@ -43,12 +44,13 @@ public class Constants {
 	//Location of description for skins
 	public static final String SKIN_LIBGDX_UI="images/uiskin.json";
 	public static final String SKIN_CANYONBUNNY_UI="images/game-ui.json";
+	*/
 	
 	
 	/***********************
 	 * ABSOLUTE CLASSPATHS *
 	 ***********************/
-	/*
+	
 	public static final String TEXTURE_ATLAS_OBJECTS="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/canyonbunny.pack.atlas";
 	public static final String LEVEL_01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/levels/level-01.png";
 	
@@ -57,5 +59,5 @@ public class Constants {
 	//Location of description file for skins
 	public static final String SKIN_LIBGDX_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/uiskin.json";
 	public static final String SKIN_CANYONBUNNY_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/game-ui.json";
-	*/
+	
 }

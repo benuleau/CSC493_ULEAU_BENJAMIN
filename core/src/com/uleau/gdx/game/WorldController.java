@@ -48,8 +48,13 @@ public class WorldController extends InputAdapter{
 	
 	private Game game;
 	
+	float livesVisual;
+	
+	public float scoreVisual;
+	
 	private void initLevel(){
 		score=0; 
+		scoreVisual=score;
 		level=new Level(Constants.LEVEL_01);
 		cameraHelper.setTarget(level.bunnyHead);
 	}
@@ -64,6 +69,7 @@ public class WorldController extends InputAdapter{
 		cameraHelper=new CameraHelper();
 		//initTestObjects();
 		lives=Constants.LIVES_START;
+		livesVisual=lives;
 		timeLeftGameOverDelay=0;
 		initLevel();
 	}
@@ -143,6 +149,12 @@ public class WorldController extends InputAdapter{
 				timeLeftGameOverDelay=Constants.TIME_DELAY_GAME_OVER;
 			else
 				initLevel();
+		}
+		level.mountains.updateScrollPosition(cameraHelper.getPosition());
+		if(livesVisual>lives)
+			livesVisual=Math.max(lives,  livesVisual-1*deltaTime);
+		if(scoreVisual<score){
+			scoreVisual=Math.min(score, scoreVisual+250*deltaTime);
 		}
 	}
 	

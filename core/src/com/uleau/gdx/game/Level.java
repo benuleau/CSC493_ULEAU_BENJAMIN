@@ -170,7 +170,7 @@ public class Level {
 		waterOverlay.render(batch);
 		
 		//Draw clouds
-		clouds.render(batch);;
+		clouds.render(batch);
 	}
 	
 	public void update(float deltaTime){

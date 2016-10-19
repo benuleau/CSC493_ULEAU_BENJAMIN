@@ -75,7 +75,6 @@ public abstract class AbstractGameObject {
 		//Make sure the object's velocity does not exceed the positive or negative terminal velocity
 		velocity.y=MathUtils.clamp(velocity.y, -terminalVelocity.y, terminalVelocity.y);
 	}
-	
 }
 
 

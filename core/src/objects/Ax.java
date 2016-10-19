@@ -8,6 +8,9 @@ import util.Constants;
 import util.CharacterSkin;
 import util.GamePreferences;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
+
 public class Ax extends AbstractGameObject{
 	public static final String TAG=Ax.class.getName();
 	private final float JUMP_TIME_MAX=0.3f;
@@ -23,6 +26,8 @@ public class Ax extends AbstractGameObject{
 	public JUMP_STATE jumpState;
 	public boolean hasOilPowerup;
 	public float timeLeftOilPowerup;
+	
+	public ParticleEffect dustParticles=new ParticleEffect();
 	
 	public Ax(){
 		init();
@@ -53,6 +58,11 @@ public class Ax extends AbstractGameObject{
 		// Power-ups
 		hasOilPowerup = false;
 		timeLeftOilPowerup = 0;
+		
+		//Particles
+		//dustParticles.load(Gdx.files.internal("particles/particles.pafx"), Gdx.files.internal("particles"));
+		dustParticles.load(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles/particles.pafx"), Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
+
 	}
 	
 	public void setJumping (boolean jumpKeyPressed) {
@@ -103,6 +113,7 @@ public class Ax extends AbstractGameObject{
 				setOilPowerup(false);
 			}
 		}
+		dustParticles.update(deltaTime);
 	}
 	
 	@Override
@@ -131,13 +142,18 @@ public class Ax extends AbstractGameObject{
 					velocity.y = terminalVelocity.y;
 				}
 		}
-		if (jumpState != JUMP_STATE.GROUNDED)
+		if (jumpState != JUMP_STATE.GROUNDED){
+			dustParticles.allowCompletion();
 			super.updateMotionY(deltaTime);
+		}
 	}
 	
 	@Override
 	public void render (SpriteBatch batch) {
 		TextureRegion reg = null;
+		
+		//Draw particles
+		dustParticles.draw(batch);
 		
 		//Apply skin color
 		batch.setColor(CharacterSkin.values()[GamePreferences.instance.charSkin].getColor());

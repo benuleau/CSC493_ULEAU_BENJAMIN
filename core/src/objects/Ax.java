@@ -60,8 +60,8 @@ public class Ax extends AbstractGameObject{
 		timeLeftOilPowerup = 0;
 		
 		//Particles
-		dustParticles.load(Gdx.files.internal("particles/particles.pafx"), Gdx.files.internal("particles"));
-		//dustParticles.load(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles/particles.pafx"), Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
+		//dustParticles.load(Gdx.files.internal("particles/particles.pafx"), Gdx.files.internal("particles"));
+		dustParticles.load(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles/particles.pafx"), Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
 
 	}
 	

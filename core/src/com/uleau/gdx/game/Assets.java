@@ -12,6 +12,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 
 
 /**
@@ -40,6 +42,8 @@ public class Assets implements Disposable, AssetErrorListener{
 	public AssetOil oil;
 	public AssetRock rock;
 	public AssetLevelDecoration levelDecoration;
+	public AssetSounds sounds;
+	public AssetMusic music;
 	
 	public void init(AssetManager assetManager){
 		this.assetManager=assetManager;
@@ -49,6 +53,16 @@ public class Assets implements Disposable, AssetErrorListener{
 		
 		//load texture atlas
 		assetManager.load(Constants.TEXTURE_ATLAS_OBJECTS, TextureAtlas.class);
+		
+		//Load sounds
+		assetManager.load(Constants.JUMP, Sound.class);
+		assetManager.load(Constants.JUMP_WITH_OIL, Sound.class);
+		assetManager.load(Constants.PICKUP_LOG, Sound.class);
+		assetManager.load(Constants.PICKUP_OIL, Sound.class);
+		assetManager.load(Constants.LIVE_LOST, Sound.class);
+		
+		//Load music
+		assetManager.load(Constants.SONG01, Music.class);
 		
 		//Start loading assets and wait until finished
 		assetManager.finishLoading();
@@ -73,6 +87,8 @@ public class Assets implements Disposable, AssetErrorListener{
 		oil=new AssetOil(atlas);
 		rock=new AssetRock(atlas);
 		levelDecoration=new AssetLevelDecoration(atlas);
+		sounds=new AssetSounds(assetManager);
+		music=new AssetMusic(assetManager);
 		
 	/*	rock=new AssetRock(atlas);
 		goldCoin=new AssetGoldCoin(atlas);
@@ -222,6 +238,29 @@ public class Assets implements Disposable, AssetErrorListener{
 			TextureFilter.Linear, TextureFilter.Linear);
 			defaultBig.getRegion().getTexture().setFilter(
 			TextureFilter.Linear, TextureFilter.Linear);
+		}
+	}
+	
+	public class AssetSounds{
+		public final Sound jump;
+		public final Sound jumpWithOil;
+		public final Sound pickupLog;
+		public final Sound pickupOil;
+		public final Sound liveLost;
+		
+		public AssetSounds(AssetManager am){
+			jump=am.get(Constants.JUMP, Sound.class);
+			jumpWithOil=am.get(Constants.JUMP_WITH_OIL, Sound.class);
+			pickupLog=am.get(Constants.PICKUP_LOG, Sound.class);
+			pickupOil=am.get(Constants.PICKUP_OIL, Sound.class);
+			liveLost=am.get(Constants.LIVE_LOST, Sound.class);
+		}
+	}
+	
+	public class AssetMusic{
+		public final Music song01;
+		public AssetMusic(AssetManager am){
+			song01=am.get(Constants.SONG01, Music.class);
 		}
 	}
 }

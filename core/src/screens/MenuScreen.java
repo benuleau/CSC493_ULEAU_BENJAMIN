@@ -28,6 +28,8 @@ import util.GamePreferences;
 import util.CharacterSkin;
 import util.Constants;
 
+import util.AudioManager;
+
 public class MenuScreen extends AbstractGameScreen{
 	private static final String TAG=MenuScreen.class.getName();
 	private Stage stage;
@@ -265,12 +267,14 @@ public class MenuScreen extends AbstractGameScreen{
 	private void onSaveClicked(){
 		saveSettings();
 		onCancelClicked();
+		AudioManager.instance.onSettingsUpdated();
 	}
 	
 	private void onCancelClicked(){
 		btnMenuPlay.setVisible(true);
 		btnMenuOptions.setVisible(true);
 		winOptions.setVisible(false);
+		AudioManager.instance.onSettingsUpdated();
 	}
 	
 	private Table buildOptWinAudioSettings(){

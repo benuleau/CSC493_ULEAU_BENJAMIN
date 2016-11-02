@@ -2,9 +2,11 @@ package objects;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.MathUtils;
 import com.uleau.gdx.game.AbstractGameObject;
 import com.uleau.gdx.game.Assets;
 import util.Constants;
+import util.AudioManager;
 import util.CharacterSkin;
 import util.GamePreferences;
 
@@ -69,6 +71,7 @@ public class Ax extends AbstractGameObject{
 		switch (jumpState) {
 			case GROUNDED: // Character is standing on a platform
 				if (jumpKeyPressed) {
+					AudioManager.instance.play(Assets.instance.sounds.jump);
 					// Start counting jump time from the beginning
 					timeJumping = 0;
 					jumpState = JUMP_STATE.JUMP_RISING;
@@ -81,6 +84,7 @@ public class Ax extends AbstractGameObject{
 			case FALLING:// Falling down
 			case JUMP_FALLING: // Falling down after jump
 				if (jumpKeyPressed && hasOilPowerup) {
+					AudioManager.instance.play(Assets.instance.sounds.jumpWithOil, 1, MathUtils.random(1.0f, 1.1f));
 					timeJumping = JUMP_TIME_OFFSET_FLYING;
 					jumpState = JUMP_STATE.JUMP_RISING;
 				}

@@ -26,6 +26,7 @@ import com.badlogic.gdx.utils.Array;
 
 import com.badlogic.gdx.Game;
 import screens.MenuScreen;
+import util.AudioManager;
 
 /**
  * @author Benjamin Uleau
@@ -155,6 +156,7 @@ public class WorldController extends InputAdapter {
 		testCollisions();
 		cameraHelper.update(deltaTime);
 		if (!isGameOver() && isPlayerInWater()) {
+			AudioManager.instance.play(Assets.instance.sounds.liveLost);
 			lives--;
 			if (isGameOver())
 				timeLeftGameOverDelay = Constants.TIME_DELAY_GAME_OVER;
@@ -238,12 +240,14 @@ public class WorldController extends InputAdapter {
 
 	private void onCollisionAxWithLog(Log log) {
 		log.collected = true;
+		AudioManager.instance.play(Assets.instance.sounds.pickupLog);
 		score += log.getScore();
 		Gdx.app.log(TAG, "Log collected");
 	}
 
 	private void onCollisionAxWithOil(OilCan oil) {
 		oil.collected = true;
+		AudioManager.instance.play(Assets.instance.sounds.pickupOil);
 		score += oil.getScore();
 		level.ax.setOilPowerup(true);
 		Gdx.app.log(TAG, "Oil collected");

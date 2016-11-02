@@ -46,6 +46,16 @@ public class Constants {
 	//Location of description for skins
 	public static final String SKIN_LIBGDX_UI="images/uiskin.json";
 	public static final String SKIN_MYGAME_UI="images/game-ui.json";
+	
+	//Sounds
+	public static final String JUMP="sounds/jump.wav";
+	public static final String JUMP_WITH_OIL="sounds/jump_with_feather.wav";
+	public static final String PICKUP_LOG="sounds/pickup_coin.wav";
+	public static final String PICKUP_OIL="sounds/pickup_feather.wav";
+	public static final String LIVE_LOST="sounds/live_lost.wav";
+	
+	//Music
+	public static final String SONG01="music/keith303_-_brand_new_highscore.mp3";
 	*/
 	
 	/***********************
@@ -65,9 +75,15 @@ public class Constants {
 	
 	public static final String PREFERENCES="mygame.preferences";
 	
-	
-	
-	
+	//Sounds
+	public static final String JUMP="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/jump.wav";
+	public static final String JUMP_WITH_OIL="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/jump_with_oil.wav";
+	public static final String PICKUP_LOG="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/pickup_log.wav";
+	public static final String PICKUP_OIL="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/pickup_oil.wav";
+	public static final String LIVE_LOST="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/live_lost.wav";
+	//Music
+	//public static final String SONG01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/music/keith303_-_brand_new_highscore.mp3";
+	public static final String SONG01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/music/keith303_-_brand_new_highscore.mp3";
 	
 	
 	

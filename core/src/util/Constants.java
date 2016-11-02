@@ -36,7 +36,7 @@ public class Constants {
 	/***********************
 	 * RELATIVE CLASSPATHS *
 	 ***********************/
-/*
+
 	public static final String TEXTURE_ATLAS_OBJECTS="images/mygame.pack.atlas";
 	
 	public static final String LEVEL_01="levels/level-01.png";
@@ -56,12 +56,12 @@ public class Constants {
 	
 	//Music
 	public static final String SONG01="music/keith303_-_brand_new_highscore.mp3";
-	*/
+	
 	
 	/***********************
 	 * ABSOLUTE CLASSPATHS *
 	 ***********************/
-	
+/*	
 	public static final String TEXTURE_ATLAS_OBJECTS="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/mygame.pack.atlas";
 	
 	public static final String LEVEL_01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/levels/level-01.png";
@@ -82,12 +82,6 @@ public class Constants {
 	public static final String PICKUP_OIL="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/pickup_oil.wav";
 	public static final String LIVE_LOST="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/live_lost.wav";
 	//Music
-	//public static final String SONG01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/music/keith303_-_brand_new_highscore.mp3";
 	public static final String SONG01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/music/keith303_-_brand_new_highscore.mp3";
-	
-	
-	
-	
-	
-	
+	*/
 }

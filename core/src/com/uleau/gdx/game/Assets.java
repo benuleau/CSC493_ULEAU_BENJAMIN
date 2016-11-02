@@ -210,21 +210,21 @@ public class Assets implements Disposable, AssetErrorListener{
 			/***********************
 			 * RELATIVE CLASSPATHS *
 			 ***********************/
-			/*
+			
 			defaultSmall = new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
 			defaultNormal = new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
 			defaultBig = new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
-			*/
+			
 			
 			
 			/***********************
 			 * ABSOLUTE CLASSPATHS *
 			 ***********************/
-			
+			/*
 			defaultSmall=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
 			defaultNormal=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
 			defaultBig=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
-			
+			*/
 
 			// set font sizes
 			defaultSmall.getData().setScale(0.75f);

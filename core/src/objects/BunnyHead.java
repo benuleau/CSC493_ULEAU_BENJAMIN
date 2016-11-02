@@ -12,6 +12,9 @@ import util.GamePreferences;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 
+import com.badlogic.gdx.math.MathUtils;
+import util.AudioManager;
+
 public class BunnyHead extends AbstractGameObject{
 	public static final String TAG = BunnyHead.class.getName();
 	private final float JUMP_TIME_MAX = 0.3f;
@@ -64,14 +67,15 @@ public class BunnyHead extends AbstractGameObject{
 		timeLeftFeatherPowerup = 0;
 		
 		//Particles
-		dustParticles.load(Gdx.files.internal("particles/particles.pafx"), Gdx.files.internal("particles"));
-		//dustParticles.load(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles/particles.pafx"), Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
+		//dustParticles.load(Gdx.files.internal("particles/particles.pafx"), Gdx.files.internal("particles"));
+		dustParticles.load(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles/particles.pafx"), Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
 	}
 	
 	public void setJumping (boolean jumpKeyPressed) {
 		switch (jumpState) {
 			case GROUNDED: // Character is standing on a platform
 				if (jumpKeyPressed) {
+					AudioManager.instance.play(Assets.instance.sounds.jump);
 					// Start counting jump time from the beginning
 					timeJumping = 0;
 					jumpState = JUMP_STATE.JUMP_RISING;
@@ -84,6 +88,7 @@ public class BunnyHead extends AbstractGameObject{
 			case FALLING:// Falling down
 			case JUMP_FALLING: // Falling down after jump
 				if (jumpKeyPressed && hasFeatherPowerup) {
+					AudioManager.instance.play(Assets.instance.sounds.jumpWithFeather, 1, MathUtils.random(1.0f, 1.1f));
 					timeJumping = JUMP_TIME_OFFSET_FLYING;
 					jumpState = JUMP_STATE.JUMP_RISING;
 				}

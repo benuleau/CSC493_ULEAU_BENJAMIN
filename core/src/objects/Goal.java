@@ -25,7 +25,8 @@ public class Goal extends AbstractGameObject{
 		TextureRegion reg=null;
 		
 		float relX=0.0f;
-		float relY=-6.5f;
+		//float relY=-6.5f;
+		float relY=0.0f;
 		
 		reg=regGoal;
 		batch.draw(reg.getTexture(), position.x+relX, position.y+relY, origin.x, origin.y, dimension.x,dimension.y, scale.x, scale.y, rotation,reg.getRegionX(), reg.getRegionY(),reg.getRegionWidth(), reg.getRegionHeight(),false, false);

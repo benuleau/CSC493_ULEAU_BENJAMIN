@@ -13,7 +13,7 @@ public class Carrot extends AbstractGameObject{
 	}
 	
 	private void init(){
-		dimension.set(0.25f, 0.5f);
+		dimension.set(0.125f, 0.25f);
 		regCarrot=Assets.instance.levelDecoration.carrot;
 		
 		//Set bounding box for collision detection

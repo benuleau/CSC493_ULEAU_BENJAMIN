@@ -57,6 +57,8 @@ public class Constants {
 	//Music
 	public static final String SONG01="music/keith303_-_brand_new_highscore.mp3";
 	
+	public static final String PREFERENCES="mygame.preferences";
+	
 	
 	/***********************
 	 * ABSOLUTE CLASSPATHS *
@@ -71,10 +73,7 @@ public class Constants {
 	//Location of description file for skins
 	public static final String SKIN_LIBGDX_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/uiskin.json";
 	public static final String SKIN_MYGAME_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/game-ui.json";
-	
-	
-	public static final String PREFERENCES="mygame.preferences";
-	
+		
 	//Sounds
 	public static final String JUMP="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/jump.wav";
 	public static final String JUMP_WITH_OIL="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/jump_with_oil.wav";

@@ -189,6 +189,8 @@ public class Assets implements Disposable, AssetErrorListener{
 		public final AtlasRegion treeL2;
 		public final AtlasRegion treeL3;
 		public final AtlasRegion water;
+		public final AtlasRegion carrot;
+		public final AtlasRegion goal;
 		
 		public AssetLevelDecoration(TextureAtlas atlas){
 			cloud=atlas.findRegion("cloud");
@@ -196,6 +198,8 @@ public class Assets implements Disposable, AssetErrorListener{
 			treeL2=atlas.findRegion("Tree-Layer2");
 			treeL3=atlas.findRegion("Tree-Layer3");
 			water=atlas.findRegion("Water");
+			carrot=atlas.findRegion("carrot");
+			goal=atlas.findRegion("goal");
 		}
 	}
 	

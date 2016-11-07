@@ -13,6 +13,8 @@ import objects.Ax;
 import objects.OilCan;
 import objects.Log;
 import objects.Rock;
+import objects.Carrot;
+import objects.Goal;
 
 public class Level {
 	public static final String TAG=Level.class.getName();
@@ -24,6 +26,8 @@ public class Level {
 	public Array<Log> logs;
 	public Array<OilCan> oils;
 	public Array<Rock> rocks;
+	public Array<Carrot> carrots;
+	public Goal goal;
 	
 	//Decoration
 	public Cloud clouds;
@@ -36,7 +40,8 @@ public class Level {
 		PLAYER_SPAWNPOINT(255, 255, 255), //white
 		ITEM_ROCK(255, 0, 0), //red
 		ITEM_OIL(0, 255, 0), //green
-		ITEM_LOG(255, 255, 0); //yellow
+		ITEM_LOG(255, 255, 0), //yellow
+		GOAL(255, 0, 255); //violet
 		
 		private int color;
 		
@@ -67,6 +72,7 @@ public class Level {
 		logs=new Array<Log>();
 		oils=new Array<OilCan>();
 		rocks=new Array<Rock>();
+		carrots=new Array<Carrot>();
 		
 		//load image file that represents the level data
 		Pixmap pixmap=new Pixmap(Gdx.files.internal(filename));
@@ -127,6 +133,13 @@ public class Level {
 					obj=new Rock();
 					offsetHeight=-1.5f;
 					obj.position.set(pixelX, baseHeight*obj.dimension.y+offsetHeight);
+				}
+				//Goal
+				else if(BLOCK_TYPE.GOAL.sameColor(currentPixel)){
+					obj=new Goal();
+					offsetHeight=-7.0f;
+					obj.position.set(pixelX, baseHeight+offsetHeight);
+					goal=(Goal)obj;
 				}
 				//Unknown object/pixel color
 				else{

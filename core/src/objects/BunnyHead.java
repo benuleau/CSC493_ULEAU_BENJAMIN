@@ -17,7 +17,7 @@ import util.AudioManager;
 
 public class BunnyHead extends AbstractGameObject{
 	public static final String TAG = BunnyHead.class.getName();
-	private final float JUMP_TIME_MAX = 0.3f;
+	private final float JUMP_TIME_MAX = 2.6f;
 	private final float JUMP_TIME_MIN = 0.1f;
 	private final float JUMP_TIME_OFFSET_FLYING =JUMP_TIME_MAX - 0.018f;
 	

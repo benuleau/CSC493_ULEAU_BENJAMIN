@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import util.GamePreferences;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
 /**
  * @author Benjamin Uleau
@@ -20,6 +21,8 @@ public class WorldRenderer implements Disposable {
 	private SpriteBatch batch;
 	private WorldController worldController;
 	private OrthographicCamera cameraGUI;
+	private static final boolean DEBUG_DRAW_BOX2D_WORLD=false;
+	private Box2DDebugRenderer b2debugRenderer;
 
 	public WorldRenderer(WorldController worldController) {
 		this.worldController = worldController;
@@ -36,6 +39,7 @@ public class WorldRenderer implements Disposable {
 		cameraGUI.position.set(0, 0, 0);
 		cameraGUI.setToOrtho(true);// flip y axis
 		cameraGUI.update();
+		b2debugRenderer=new Box2DDebugRenderer();
 	}
 
 	private void renderWorld(SpriteBatch batch) {
@@ -44,6 +48,9 @@ public class WorldRenderer implements Disposable {
 		batch.begin();
 		worldController.level.render(batch);
 		batch.end();
+		if(DEBUG_DRAW_BOX2D_WORLD){
+			b2debugRenderer.render(worldController.b2World, camera.combined);
+		}
 	}
 
 	public void render() {

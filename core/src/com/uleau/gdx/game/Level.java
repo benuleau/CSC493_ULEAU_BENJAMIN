@@ -12,6 +12,8 @@ import objects.WaterOverlay;
 import objects.BunnyHead;
 import objects.Feather;
 import objects.GoldCoin;
+import objects.Carrot;
+import objects.Goal;
 
 public class Level {
 	public static final String TAG=Level.class.getName();
@@ -22,6 +24,8 @@ public class Level {
 	public BunnyHead bunnyHead;
 	public Array<GoldCoin> goldcoins;
 	public Array<Feather> feathers;
+	public Array<Carrot> carrots;
+	public Goal goal;
 		
 	//Decoration
 	public Clouds clouds;
@@ -33,7 +37,8 @@ public class Level {
 		ROCK(0, 0, 0), //black
 		PLAYER_SPAWNPOINT(255, 255, 255), //white
 		ITEM_FEATHER(255, 0, 0), //red
-		ITEM_GOLD_COIN(255, 255, 0); //yellow
+		ITEM_GOLD_COIN(255, 255, 0), //yellow
+		GOAL(0, 255, 0); //green
 		
 		private int color;
 		
@@ -60,9 +65,9 @@ public class Level {
 		
 		//objects
 		rocks=new Array<Rock>();
-		
 		goldcoins=new Array<GoldCoin>();
 		feathers=new Array<Feather>();
+		carrots=new Array<Carrot>();
 		
 		//load image file that represents the level data
 		Pixmap pixmap=new Pixmap(Gdx.files.internal(filename));
@@ -118,6 +123,13 @@ public class Level {
 					obj.position.set(pixelX, baseHeight*obj.dimension.y+offsetHeight);
 					goldcoins.add((GoldCoin)obj);
 				}
+				//Goal
+				else if(BLOCK_TYPE.GOAL.sameColor(currentPixel)){
+					obj=new Goal();
+					offsetHeight=-7.0f;
+					obj.position.set(pixelX, baseHeight+offsetHeight);
+					goal=(Goal)obj;
+				}
 				//Unknown object/pixel color
 				else{
 					int r=0xff & (currentPixel>>>24); //Red color channel
@@ -148,6 +160,9 @@ public class Level {
 		//Draw mountains
 		mountains.render(batch);
 		
+		//Draw Goal
+		goal.render(batch);
+		
 		//Draw rocks
 		for(Rock rock : rocks){
 			rock.render(batch);
@@ -162,7 +177,11 @@ public class Level {
 		for(Feather feather : feathers){
 			feather.render(batch);
 		}
-				
+		
+		//Draw Carrots
+		for(Carrot carrot : carrots)
+			carrot.render(batch);
+		
 		//Draw Player Character
 		bunnyHead.render(batch);
 		
@@ -181,6 +200,8 @@ public class Level {
 			goldCoin.update(deltaTime);
 		for(Feather feather : feathers)
 			feather.update(deltaTime);
+		for(Carrot carrot : carrots)
+			carrot.update(deltaTime);
 		clouds.update(deltaTime);
 	}
 	

@@ -145,6 +145,8 @@ public class Assets implements Disposable, AssetErrorListener{
 		public final AtlasRegion mountainLeft;
 		public final AtlasRegion mountainRight;
 		public final AtlasRegion waterOverlay;
+		public final AtlasRegion carrot;
+		public final AtlasRegion goal;
 		
 		public AssetLevelDecoration(TextureAtlas atlas){
 			cloud01=atlas.findRegion("cloud01");
@@ -153,6 +155,8 @@ public class Assets implements Disposable, AssetErrorListener{
 			mountainLeft=atlas.findRegion("mountain_left");
 			mountainRight=atlas.findRegion("mountain_right");
 			waterOverlay=atlas.findRegion("water_overlay");
+			carrot=atlas.findRegion("carrot");
+			goal=atlas.findRegion("goal");
 		}
 	}
 	
@@ -167,20 +171,20 @@ public class Assets implements Disposable, AssetErrorListener{
 			/***********************
 			 * RELATIVE CLASSPATHS *
 			 ***********************/
-			
+			/*
 			defaultSmall=new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
 			defaultNormal=new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
 			defaultBig=new BitmapFont(Gdx.files.internal("Images/arial-15.fnt"), true);
-			
+			*/
 			
 			/***********************
 			 * ABSOLUTE CLASSPATHS *
 			 ***********************/
-			/*
+			
 			defaultSmall=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
 			defaultNormal=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
 			defaultBig=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
-			*/
+			
 
 			
 			//Set font sizes
@@ -207,24 +211,24 @@ public class Assets implements Disposable, AssetErrorListener{
 			/***********************
 			 * RELATIVE CLASSPATHS *
 			 ***********************/
-			
+			/*
 			jump=am.get("sounds/jump.wav", Sound.class);
 			jumpWithFeather=am.get("sounds/jump_with_feather.wav", Sound.class);
 			pickupCoin=am.get("sounds/pickup_coin.wav", Sound.class);
 			pickupFeather=am.get("sounds/pickup_feather.wav", Sound.class);
 			liveLost=am.get("sounds/live_lost.wav", Sound.class);
-			
+			*/
 			
 			/***********************
 			 * ABSOLUTE CLASSPATHS *
 			 ***********************/
-			/*
+			
 			jump=am.get("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sounds/jump.wav", Sound.class);
 			jumpWithFeather=am.get("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sounds/jump_with_feather.wav", Sound.class);
 			pickupCoin=am.get("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sounds/pickup_coin.wav", Sound.class);
 			pickupFeather=am.get("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sounds/pickup_feather.wav", Sound.class);
 			liveLost=am.get("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sounds/live_lost.wav", Sound.class);
-			*/
+			
 		}
 	}
 	
@@ -235,12 +239,12 @@ public class Assets implements Disposable, AssetErrorListener{
 			/***********************
 			 * RELATIVE CLASSPATHS *
 			 ***********************/
-			song01=am.get("music/keith303_-_brand_new_highscore.mp3", Music.class);
+			//song01=am.get("music/keith303_-_brand_new_highscore.mp3", Music.class);
 			
 			/***********************
 			 * ABSOLUTE CLASSPATHS *
 			 ***********************/
-			//song01=am.get("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/music/keith303_-_brand_new_highscore.mp3", Music.class);
+			song01=am.get("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/music/keith303_-_brand_new_highscore.mp3", Music.class);
 		}
 	}
 }

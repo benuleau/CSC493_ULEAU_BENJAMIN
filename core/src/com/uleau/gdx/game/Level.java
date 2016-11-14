@@ -173,6 +173,9 @@ public class Level {
 		//Draw mountains
 		tree.render(batch);
 		
+		//Draw goal
+		goal.render(batch);
+		
 		//Draw Ground tiles
 		for(GroundTile g : ground){
 			g.render(batch);
@@ -195,6 +198,11 @@ public class Level {
 		for(Rock rock : rocks){
 			rock.render(batch);
 		}
+		
+		//Draw Carrots
+		for(Carrot carrot : carrots){
+			carrot.render(batch);
+		}
 				
 		//Draw water overlay
 		water.render(batch);
@@ -215,6 +223,8 @@ public class Level {
 			oil.update(deltaTime);
 		for(Rock rock : rocks)
 			rock.update(deltaTime);
+		for(Carrot carrot : carrots)
+			carrot.update(deltaTime);
 		clouds.update(deltaTime);
 	}
 }

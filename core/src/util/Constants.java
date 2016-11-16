@@ -40,7 +40,7 @@ public class Constants {
 	/***********************
 	 * RELATIVE CLASSPATHS *
 	 ***********************/
-	/*
+	
 	//Location of description file for texture atlas
 	public static final String TEXTURE_ATLAS_OBJECTS="images/canyonbunny.pack.atlas";
 	
@@ -62,13 +62,13 @@ public class Constants {
 	
 	//Music
 	public static final String SONG01="music/keith303_-_brand_new_highscore.mp3";
-	*/
+	
 	
 	
 	/***********************
 	 * ABSOLUTE CLASSPATHS *
 	 ***********************/
-	
+	/*
 	public static final String TEXTURE_ATLAS_OBJECTS="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/canyonbunny.pack.atlas";
 	public static final String LEVEL_01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/levels/level-01.png";
 	
@@ -88,5 +88,5 @@ public class Constants {
 	//Music
 	//public static final String SONG01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/music/keith303_-_brand_new_highscore.mp3";
 	public static final String SONG01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/music/keith303_-_brand_new_highscore.mp3";
-	
+	*/
 }

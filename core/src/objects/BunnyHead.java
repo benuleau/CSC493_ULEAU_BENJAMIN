@@ -81,13 +81,16 @@ public class BunnyHead extends AbstractGameObject {
 		timeLeftFeatherPowerup = 0;
 
 		// Particles
-		// dustParticles.load(Gdx.files.internal("particles/particles.pafx"),
-		// Gdx.files.internal("particles"));
-		dustParticles.load(
+		//Relative classpaths
+		dustParticles.load(Gdx.files.internal("particles/particles.pafx"), Gdx.files.internal("particles"));
+		
+		//Absolute classpaths
+		/*dustParticles.load(
 				Gdx.files.internal(
 						"/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles/particles.pafx"),
 				Gdx.files.internal(
 						"/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
+		*/
 	}
 
 	public void setJumping(boolean jumpKeyPressed) {

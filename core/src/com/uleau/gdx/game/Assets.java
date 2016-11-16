@@ -160,7 +160,7 @@ public class Assets implements Disposable, AssetErrorListener {
 			for (int i = 0; i < 10; i++)
 				regions.insert(0, region);
 			animGoldCoin = new Animation(1.0f / 20.0f, regions, Animation.PlayMode.LOOP_PINGPONG);
-		
+
 		}
 	}
 

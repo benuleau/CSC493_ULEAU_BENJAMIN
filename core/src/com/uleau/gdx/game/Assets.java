@@ -217,7 +217,7 @@ public class Assets implements Disposable, AssetErrorListener {
 			/***********************
 			 * ABSOLUTE CLASSPATHS *
 			 ***********************/
-/*
+			/*
 			defaultSmall = new BitmapFont(
 					Gdx.files.internal(
 							"/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"),
@@ -267,7 +267,7 @@ public class Assets implements Disposable, AssetErrorListener {
 			/***********************
 			 * ABSOLUTE CLASSPATHS *
 			 ***********************/
-		/*	
+		/*
 			jump = am.get(
 					"/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sounds/jump.wav",
 					Sound.class);
@@ -282,8 +282,8 @@ public class Assets implements Disposable, AssetErrorListener {
 					Sound.class);
 			liveLost = am.get(
 					"/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sounds/live_lost.wav",
-					Sound.class);
-*/
+					Sound.class);*/
+
 		}
 	}
 
@@ -300,8 +300,8 @@ public class Assets implements Disposable, AssetErrorListener {
 			/***********************
 			 * ABSOLUTE CLASSPATHS *
 			 ***********************/
-			/*
-			song01 = am.get(
+			
+			/*song01 = am.get(
 					"/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/music/keith303_-_brand_new_highscore.mp3",
 					Music.class);
 			*/

@@ -91,6 +91,7 @@ public class BunnyHead extends AbstractGameObject {
 				Gdx.files.internal(
 						"/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
 		*/
+		
 	}
 
 	public void setJumping(boolean jumpKeyPressed) {

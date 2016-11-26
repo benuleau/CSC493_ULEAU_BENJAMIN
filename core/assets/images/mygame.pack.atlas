@@ -13,14 +13,14 @@ Ax
   index: -1
 Cloud
   rotate: false
-  xy: 476, 503
+  xy: 486, 173
   size: 110, 70
   orig: 110, 70
   offset: 0, 0
   index: -1
 GroundTile
   rotate: false
-  xy: 476, 575
+  xy: 706, 578
   size: 190, 50
   orig: 190, 50
   offset: 0, 0
@@ -83,11 +83,74 @@ Tree-Layer3
   index: -1
 Water
   rotate: false
-  xy: 476, 437
+  xy: 617, 561
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
+anim_gold_coin
+  rotate: false
+  xy: 486, 115
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: 1
+anim_gold_coin
+  rotate: false
+  xy: 617, 503
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: 2
+anim_gold_coin
+  rotate: false
+  xy: 486, 57
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: 3
+anim_gold_coin
+  rotate: false
+  xy: 617, 445
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: 4
+anim_gold_coin
+  rotate: false
+  xy: 617, 387
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: 5
+anim_gold_coin
+  rotate: false
+  xy: 617, 329
+  size: 56, 56
+  orig: 56, 56
+  offset: 0, 0
+  index: 6
+anim_log
+  rotate: false
+  xy: 345, 52
+  size: 139, 189
+  orig: 139, 189
+  offset: 0, 0
+  index: 1
+anim_log
+  rotate: false
+  xy: 476, 436
+  size: 139, 189
+  orig: 139, 189
+  offset: 0, 0
+  index: 2
+anim_log
+  rotate: false
+  xy: 476, 245
+  size: 139, 189
+  orig: 139, 189
+  offset: 0, 0
+  index: 3
 carrot
   rotate: false
   xy: 988, 935

@@ -14,7 +14,8 @@ import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
-
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.utils.Array;
 
 /**
  * @author Benjamin Uleau
@@ -135,11 +136,20 @@ public class Assets implements Disposable, AssetErrorListener{
 		public final AtlasRegion log;
 		public final AtlasRegion logL;
 		public final AtlasRegion logR;
+		public Animation animLog;
 		
 		public AssetLog(TextureAtlas atlas){
 			log=atlas.findRegion("Log");
 			logL=atlas.findRegion("Log-left");
 			logR=atlas.findRegion("Log-right");
+			
+			//Animation: Log
+			Array<AtlasRegion> regions=atlas.findRegions("anim_log");
+			AtlasRegion region=regions.first();
+			for(int i=0; i<10; i++){
+				regions.insert(0,  region);
+				animLog=new Animation(1.0f/20.0f, regions, Animation.PlayMode.LOOP);
+			}
 		}
 	}
 	

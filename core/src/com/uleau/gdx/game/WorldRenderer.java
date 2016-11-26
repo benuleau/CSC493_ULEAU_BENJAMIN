@@ -21,7 +21,7 @@ public class WorldRenderer implements Disposable {
 	private SpriteBatch batch;
 	private WorldController worldController;
 	private OrthographicCamera cameraGUI;
-	private static final boolean DEBUG_DRAW_BOX2D_WORLD=false;
+	private static final boolean DEBUG_DRAW_BOX2D_WORLD=true;
 	private Box2DDebugRenderer b2debugRenderer;
 	
 	public WorldRenderer(WorldController worldController){
@@ -39,6 +39,7 @@ public class WorldRenderer implements Disposable {
 		cameraGUI.position.set(0, 0, 0);
 		cameraGUI.setToOrtho(true); // flip y-axis
 		cameraGUI.update();
+		
 		b2debugRenderer=new Box2DDebugRenderer();
 	}
 	

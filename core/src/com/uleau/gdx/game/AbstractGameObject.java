@@ -1,5 +1,6 @@
 package com.uleau.gdx.game;
 
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Rectangle;
@@ -18,8 +19,12 @@ public abstract class AbstractGameObject {
 	public Vector2 friction;
 	public Vector2 acceleration;
 	public Rectangle bounds;
-	
+
 	public Body body;
+	
+	//Animation
+	public float stateTime;
+	public Animation animation;
 
 	public AbstractGameObject() {
 		position = new Vector2();
@@ -36,15 +41,16 @@ public abstract class AbstractGameObject {
 	}
 
 	public void update(float deltaTime) {
-		if(body==null){
-		updateMotionX(deltaTime);
-		updateMotionY(deltaTime);
-		// Move to new position
-		position.x += velocity.x * deltaTime;
-		position.y += velocity.y * deltaTime;
-		}else{
+		if (body == null) {
+			updateMotionX(deltaTime);
+			updateMotionY(deltaTime);
+
+			// Move to new position
+			position.x += velocity.x * deltaTime;
+			position.y += velocity.y * deltaTime;
+		} else {
 			position.set(body.getPosition());
-			rotation=body.getAngle()*MathUtils.radiansToDegrees;
+			rotation = body.getAngle() * MathUtils.radiansToDegrees;
 		}
 	}
 
@@ -84,5 +90,10 @@ public abstract class AbstractGameObject {
 		// Make sure the object's velocity does not exceed the
 		// positive or negative terminal velocity
 		velocity.y = MathUtils.clamp(velocity.y, -terminalVelocity.y, terminalVelocity.y);
+	}
+	
+	public void setAnimation(Animation anim){
+		animation=anim;
+		stateTime=0;
 	}
 }

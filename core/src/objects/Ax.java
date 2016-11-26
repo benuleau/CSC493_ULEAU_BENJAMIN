@@ -15,7 +15,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 
 public class Ax extends AbstractGameObject{
 	public static final String TAG=Ax.class.getName();
-	private final float JUMP_TIME_MAX=0.3f;
+	private final float JUMP_TIME_MAX=0.5f;
 	private final float JUMP_TIME_MIN=0.1f;
 	private final float JUMP_TIME_OFFSET_FLYING=JUMP_TIME_MAX - 0.018f;
 	
@@ -62,7 +62,15 @@ public class Ax extends AbstractGameObject{
 		timeLeftOilPowerup = 0;
 		
 		//Particles
+		
+		//***********************
+		//	RELATIVE CLASSPATH	*
+		//***********************
 		//dustParticles.load(Gdx.files.internal("particles/particles.pafx"), Gdx.files.internal("particles"));
+		
+		//***********************
+		//	ABSOLUTE CLASSPATH	*
+		//***********************
 		dustParticles.load(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles/particles.pafx"), Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
 
 	}
@@ -75,6 +83,11 @@ public class Ax extends AbstractGameObject{
 					// Start counting jump time from the beginning
 					timeJumping = 0;
 					jumpState = JUMP_STATE.JUMP_RISING;
+				} else if(velocity.x!=0){
+					dustParticles.setPosition(position.x+dimension.x/2,  position.y+0.1f);
+					dustParticles.start();
+				} else if(velocity.x==0){
+					dustParticles.allowCompletion();
 				}
 				break;
 			case JUMP_RISING: // Rising in the air
@@ -99,11 +112,11 @@ public class Ax extends AbstractGameObject{
 		}
 	}
 	
-	public boolean hasFeatherPowerup () {
+	public boolean hasOilPowerup () {
 		return hasOilPowerup && timeLeftOilPowerup>0;
 	}
 	
-	@Override
+	/*@Override
 	public void update (float deltaTime) {
 		super.update(deltaTime);
 		if (velocity.x != 0) {
@@ -118,7 +131,65 @@ public class Ax extends AbstractGameObject{
 			}
 		}
 		dustParticles.update(deltaTime);
+	}*/
+	
+	@Override
+	public void update(float deltaTime){
+		//super.update(deltaTime);
+		updateMotionX(deltaTime);
+		updateMotionY(deltaTime);
+		
+		if(body!=null){
+			body.setLinearVelocity(velocity);
+			position.set(body.getPosition());
+			if(velocity.x!=0){
+				viewDirection=velocity.x<0?VIEW_DIRECTION.LEFT : VIEW_DIRECTION.RIGHT;
+			}
+			if(timeLeftOilPowerup>0){
+				timeLeftOilPowerup-=deltaTime;
+				if(timeLeftOilPowerup<0){
+					//disable power-up
+					timeLeftOilPowerup=0;
+					setOilPowerup(false);
+				}
+			}
+		}
 	}
+	
+	/*@Override
+	protected void updateMotionY(float deltaTime) {
+		switch (jumpState) {
+		case GROUNDED:
+			jumpState = JUMP_STATE.FALLING;
+			if (velocity.x != 0) {
+				dustParticles.setPosition(position.x + dimension.x / 2, position.y);
+				dustParticles.start();
+			}
+			break;
+		case JUMP_RISING:
+			// Keep track of jump time
+			timeJumping += deltaTime;
+			// Jump time left?
+			if (timeJumping <= JUMP_TIME_MAX) {
+				// Still jumping
+				velocity.y = terminalVelocity.y;
+			}
+			break;
+		case FALLING:
+			break;
+		case JUMP_FALLING:
+			// Add delta times to track jump time
+			timeJumping += deltaTime;
+			// Jump to minimal height if jump key was pressed too short
+			if (timeJumping > 0 && timeJumping <= JUMP_TIME_MIN) {
+				// Still jumping
+				velocity.y = terminalVelocity.y;
+			}
+		}
+		if (jumpState != JUMP_STATE.GROUNDED)
+			dustParticles.allowCompletion();
+		super.updateMotionY(deltaTime);
+	}*/
 	
 	@Override
 	protected void updateMotionY (float deltaTime) {

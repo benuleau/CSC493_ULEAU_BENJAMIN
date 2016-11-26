@@ -13,42 +13,42 @@ Ax
   index: -1
 Cloud
   rotate: false
-  xy: 476, 503
+  xy: 407, 503
   size: 110, 70
   orig: 110, 70
   offset: 0, 0
   index: -1
 GroundTile
   rotate: false
-  xy: 476, 575
+  xy: 407, 575
   size: 190, 50
   orig: 190, 50
   offset: 0, 0
   index: -1
 Log
   rotate: false
-  xy: 335, 405
+  xy: 706, 636
   size: 139, 189
   orig: 139, 189
   offset: 0, 0
   index: -1
 Log-left
   rotate: false
-  xy: 908, 635
+  xy: 273, 32
   size: 70, 190
   orig: 70, 190
   offset: 0, 0
   index: -1
 Log-right
   rotate: false
-  xy: 273, 32
+  xy: 335, 404
   size: 70, 190
   orig: 70, 190
   offset: 0, 0
   index: -1
 OilCan
   rotate: false
-  xy: 335, 243
+  xy: 847, 665
   size: 139, 160
   orig: 139, 160
   offset: 0, 0
@@ -83,22 +83,8 @@ Tree-Layer3
   index: -1
 Water
   rotate: false
-  xy: 476, 437
+  xy: 335, 338
   size: 64, 64
   orig: 64, 64
-  offset: 0, 0
-  index: -1
-carrot
-  rotate: false
-  xy: 988, 935
-  size: 20, 52
-  orig: 20, 52
-  offset: 0, 0
-  index: -1
-goal
-  rotate: false
-  xy: 706, 630
-  size: 200, 195
-  orig: 200, 195
   offset: 0, 0
   index: -1

@@ -45,9 +45,8 @@ import objects.Carrot;
 public class WorldController extends InputAdapter implements Disposable{
 	private static final String TAG = WorldController.class.getName();
 	// public Sprite[] testSprites;
-	// public int selectedSprite;
+	// public int selectedSprite;	
 	public CameraHelper cameraHelper;
-	private int selectedSprites;
 	public Level level;
 	public int lives;
 	public int score;
@@ -66,6 +65,7 @@ public class WorldController extends InputAdapter implements Disposable{
 	private boolean goalReached;
 	public World b2World;
 	
+	
 	private void initLevel() {
 		score = 0;
 		scoreVisual=score;
@@ -79,6 +79,9 @@ public class WorldController extends InputAdapter implements Disposable{
 		if(b2World!=null)
 			b2World.dispose();
 		b2World=new World(new Vector2(0, -9.81f), true);
+		
+		//b2World.setContactListener(new CollisionHandler(this)); //Not in book
+		
 		//Ground tiles
 		Vector2 origin=new Vector2();
 		for(GroundTile ground : level.ground){
@@ -87,17 +90,42 @@ public class WorldController extends InputAdapter implements Disposable{
 			bDef.position.set(ground.position);
 			
 			Body body=b2World.createBody(bDef);
+			
+			body.setUserData(ground); //89
+			
 			ground.body=body;
 			
 			PolygonShape pShape=new PolygonShape();
 			origin.x=ground.bounds.width/2.0f;
 			origin.y=ground.bounds.height/2.0f;
-			pShape.setAsBox(ground.bounds.width/2.0f, ground.bounds.height/2.0f, origin, 0);
+			pShape.setAsBox(ground.bounds.width/2.0f, ground.bounds.height/2.0f, origin, 0);	//97
 			FixtureDef fDef=new FixtureDef();
 			fDef.shape=pShape;
 			body.createFixture(fDef);
 			pShape.dispose();
 		}
+		
+		
+		Ax ax = level.ax;
+		BodyDef bodyDef = new BodyDef();
+		bodyDef.position.set(ax.position);
+		bodyDef.fixedRotation = true;
+
+		Body body = b2World.createBody(bodyDef);
+		body.setType(BodyType.DynamicBody);
+		body.setGravityScale(0.0f);
+		body.setUserData(ax);
+		ax.body = body;
+
+		PolygonShape polygonShape = new PolygonShape();
+		origin.x = (ax.bounds.width) / 2.0f;
+		origin.y = (ax.bounds.height) / 2.0f;
+		polygonShape.setAsBox((ax.bounds.width-0.7f) / 2.0f, (ax.bounds.height-0.15f) / 2.0f, origin, 0);
+
+		FixtureDef fixtureDef = new FixtureDef();
+		fixtureDef.shape = polygonShape;
+		body.createFixture(fixtureDef);
+		polygonShape.dispose();
 	}
 	
 	public WorldController(Game game) {
@@ -184,7 +212,7 @@ public class WorldController extends InputAdapter implements Disposable{
 	 * }
 	 */
 
-	public void update(float deltaTime) {
+	public void update(float deltaTime) {		
 		handleDebugInput(deltaTime);
 		if (isGameOver() || goalReached) {
 			timeLeftGameOverDelay -= deltaTime;
@@ -396,11 +424,12 @@ public class WorldController extends InputAdapter implements Disposable{
 			Body body=b2World.createBody(bDef);
 			body.setType(BodyType.DynamicBody);
 			carrot.body=body;
+			
 			//Create rectangular shape for carrot to allow interactions (collisions) with other objects
 			PolygonShape pShape=new PolygonShape();
 			float halfWidth=carrot.bounds.width/2.0f*carrotScale;
 			float halfHeight=carrot.bounds.height/2.0f*carrotScale;
-			pShape.setAsBox(halfWidth*carrotShapeScale,  halfHeight*carrotShapeScale);;
+			pShape.setAsBox(halfWidth*carrotShapeScale,  halfHeight*carrotShapeScale);
 			
 			//Set physics attributes
 			FixtureDef fDef=new FixtureDef();
@@ -416,6 +445,7 @@ public class WorldController extends InputAdapter implements Disposable{
 		}
 	}
 	
+		
 	public void dispose(){
 		if(b2World!=null) b2World.dispose();
 	}

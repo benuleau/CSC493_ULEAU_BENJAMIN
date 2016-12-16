@@ -144,20 +144,30 @@ public class Assets implements Disposable, AssetErrorListener{
 			logR=atlas.findRegion("Log-right");
 			
 			//Animation: Log
-			Array<AtlasRegion> regions=atlas.findRegions("anim_log");
-			AtlasRegion region=regions.first();
+			Array<AtlasRegion> regions_log=atlas.findRegions("anim_log");
+			AtlasRegion region_log=regions_log.first();
 			for(int i=0; i<10; i++){
-				regions.insert(0,  region);
-				animLog=new Animation(1.0f/20.0f, regions, Animation.PlayMode.LOOP);
+				regions_log.insert(0,  region_log);
+				animLog=new Animation(1.0f/20.0f, regions_log, Animation.PlayMode.LOOP);
 			}
 		}
 	}
 	
 	public class AssetOil{
 		public final AtlasRegion oil;
+		public Animation animOil;
+
 		
 		public AssetOil(TextureAtlas atlas){
 			oil=atlas.findRegion("OilCan");
+			
+			//Animation: Oil
+			Array<AtlasRegion> regions_oil=atlas.findRegions("anim_oil");
+			AtlasRegion region_oil=regions_oil.first();
+			for(int i=0; i<10; i++){
+				regions_oil.insert(0, region_oil);
+				animOil=new Animation(1.0f/20.0f, regions_oil, Animation.PlayMode.LOOP);
+			}
 		}
 	}
 	
@@ -224,21 +234,21 @@ public class Assets implements Disposable, AssetErrorListener{
 			/***********************
 			 * RELATIVE CLASSPATHS *
 			 ***********************/
-			
+			/*
 			defaultSmall = new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
 			defaultNormal = new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
 			defaultBig = new BitmapFont(Gdx.files.internal("images/arial-15.fnt"), true);
-			
+			*/
 			
 			
 			/***********************
 			 * ABSOLUTE CLASSPATHS *
 			 ***********************/
-			/*
+			
 			defaultSmall=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
 			defaultNormal=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
 			defaultBig=new BitmapFont(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/arial-15.fnt"), true);
-			*/
+			
 
 			// set font sizes
 			defaultSmall.getData().setScale(0.75f);

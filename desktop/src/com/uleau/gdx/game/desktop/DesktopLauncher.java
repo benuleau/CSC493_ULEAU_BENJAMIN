@@ -17,7 +17,8 @@ public class DesktopLauncher {
 			settings.maxHeight=1024;
 			settings.duplicatePadding=false;
 			//settings.debug=drawDebugOutline;
-			TexturePacker.process(settings, "assets-raw/images", "../core/assets/images", "mygame.pack");
+			//TexturePacker.process(settings, "assets-raw/images", "../core/assets/images", "mygame.pack");
+			TexturePacker.process(settings, "assets-raw/images_ui", "../core/assets/images", "game-ui.pack");
 		}
 		
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();

@@ -30,6 +30,7 @@ public class Ax extends AbstractGameObject{
 	public float timeLeftOilPowerup;
 	
 	public ParticleEffect dustParticles=new ParticleEffect();
+	public ParticleEffect jumpParticles=new ParticleEffect();
 	
 	public Ax(){
 		init();
@@ -47,7 +48,7 @@ public class Ax extends AbstractGameObject{
 		
 		// Set physics values
 		terminalVelocity.set(3.0f, 4.0f);
-		friction.set(12.0f, 0.0f);
+		friction.set(1.0f, 0.0f);
 		acceleration.set(0.0f, -25.0f);
 		
 		// View direction
@@ -66,13 +67,14 @@ public class Ax extends AbstractGameObject{
 		//***********************
 		//	RELATIVE CLASSPATH	*
 		//***********************
-		dustParticles.load(Gdx.files.internal("particles/particles.pafx"), Gdx.files.internal("particles"));
+		//dustParticles.load(Gdx.files.internal("particles/particles.pafx"), Gdx.files.internal("particles"));
+		//jumpParticles.load(Gdx.files.internal("particles/dust_particles.pafx"), Gdx.files.internal("particles"));
 		
 		//***********************
 		//	ABSOLUTE CLASSPATH	*
 		//***********************
-		//dustParticles.load(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles/particles.pafx"), Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
-
+		dustParticles.load(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles/particles.pafx"), Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
+		jumpParticles.load(Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles/jump_particles.pafx"), Gdx.files.internal("/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/particles"));
 	}
 	
 	public void setJumping (boolean jumpKeyPressed) {
@@ -91,6 +93,8 @@ public class Ax extends AbstractGameObject{
 				}
 				break;
 			case JUMP_RISING: // Rising in the air
+				//jumpParticles.setPosition(position.x+dimension.x/2, position.y+0.1f);
+				//jumpParticles.start();
 				if (!jumpKeyPressed)
 					jumpState = JUMP_STATE.JUMP_FALLING;
 				break;
@@ -101,6 +105,8 @@ public class Ax extends AbstractGameObject{
 					timeJumping = JUMP_TIME_OFFSET_FLYING;
 					jumpState = JUMP_STATE.JUMP_RISING;
 				}
+				jumpParticles.setPosition(position.x+dimension.x/2, position.y+0.1f);
+				jumpParticles.start();
 				break;
 		}
 	}
@@ -153,6 +159,8 @@ public class Ax extends AbstractGameObject{
 					setOilPowerup(false);
 				}
 			}
+			dustParticles.update(deltaTime);
+			jumpParticles.update(deltaTime);
 		}
 	}
 	
@@ -221,6 +229,7 @@ public class Ax extends AbstractGameObject{
 			dustParticles.allowCompletion();
 			super.updateMotionY(deltaTime);
 		}
+		
 	}
 	
 	@Override
@@ -229,6 +238,7 @@ public class Ax extends AbstractGameObject{
 		
 		//Draw particles
 		dustParticles.draw(batch);
+		jumpParticles.draw(batch);
 		
 		//Apply skin color
 		batch.setColor(CharacterSkin.values()[GamePreferences.instance.charSkin].getColor());

@@ -31,6 +31,8 @@ public class Constants {
 	
 	public static final String PREFERENCES="mygame.preferences";
 	
+	public static final String HIGH_SCORE="mygame.high_score";
+	
 	//Number of carrots to spawn
 	public static final int CARROTS_SPAWN_MAX=100;
 	
@@ -45,7 +47,7 @@ public class Constants {
 	/***********************
 	 * RELATIVE CLASSPATHS *
 	 ***********************/
-
+/*
 	public static final String TEXTURE_ATLAS_OBJECTS="images/mygame.pack.atlas";
 	
 	public static final String LEVEL_01="levels/level-01.png";
@@ -65,23 +67,24 @@ public class Constants {
 	
 	//Music
 	public static final String SONG01="music/keith303_-_brand_new_highscore.mp3";
-	
+	*/
 	
 	
 	/***********************
 	 * ABSOLUTE CLASSPATHS *
 	 ***********************/
-/*
+
 	public static final String TEXTURE_ATLAS_OBJECTS="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/mygame.pack.atlas";
 	
 	public static final String LEVEL_01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/levels/level-01.png";
-
+	public static final String LEVEL_02="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/levels/level-02.png";
+	
 	public static final String TEXTURE_ATLAS_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/game-ui-pack.atlas";
 	public static final String TEXTURE_ATLAS_LIBGDX_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/uiskin.atlas";
 	//Location of description file for skins
 	public static final String SKIN_LIBGDX_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/uiskin.json";
 	public static final String SKIN_MYGAME_UI="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/images/game-ui.json";
-		
+	
 	//Sounds
 	public static final String JUMP="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/jump.wav";
 	public static final String JUMP_WITH_OIL="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/jump_with_oil.wav";
@@ -90,5 +93,5 @@ public class Constants {
 	public static final String LIVE_LOST="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/sound/live_lost.wav";
 	//Music
 	public static final String SONG01="/Users/benuleau/Desktop/School/JuniorS1/CSC493/CSC493_ULEAU_BENJAMIN/core/assets/music/keith303_-_brand_new_highscore.mp3";
-	*/
+
 }

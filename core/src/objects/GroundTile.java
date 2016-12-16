@@ -27,6 +27,8 @@ public class GroundTile extends AbstractGameObject {
 		// Start length of this rock
 		setLength(1);
 
+		friction.set(20.0f, 0.0f);
+		
 		floatingDownwards = false;
 		floatCycleTimeLeft = MathUtils.random(0, FLOAT_CYCLE_TIME / 2);
 		floatTargetPosition = null;

@@ -9,6 +9,8 @@ import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import util.GamePreferences;
+import util.HighScore;
+
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 
@@ -95,6 +97,14 @@ public class WorldRenderer implements Disposable {
 		Assets.instance.fonts.defaultBig.draw(batch,"" + worldController.score,x + 75, y + 37);
 	}
 	
+	private void renderGuiHighScore(){
+		float x=-15;
+		float y=10;
+		float offsetX=50;
+		float offsetY=50;
+		Assets.instance.fonts.defaultBig.draw(batch, "High Score:"+HighScore.instance.getHighScore(), x+75, y+37);
+	}
+	
 	private void renderGuiExtraLive (SpriteBatch batch) {
 		float x = cameraGUI.viewportWidth - 50 -
 		Constants.LIVES_START * 50;
@@ -142,6 +152,8 @@ public class WorldRenderer implements Disposable {
 		batch.begin();
 		// draw collected logs icon + text (anchored to top left edge)
 		renderGuiScore(batch);
+		//Draw High score
+		renderGuiHighScore();
 		//Draw collected oil icon (anchored to top left edge)
 		renderGuiOilPowerup(batch);
 		// draw extra lives icon + text (anchored to top right edge)

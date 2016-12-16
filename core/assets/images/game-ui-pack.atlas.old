@@ -4,20 +4,6 @@ size: 1024,1024
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
-Log
-  rotate: false
-  xy: 805, 776
-  size: 139, 189
-  orig: 139, 189
-  offset: 0, 0
-  index: -1
-Oil
-  rotate: false
-  xy: 805, 614
-  size: 139, 160
-  orig: 139, 160
-  offset: 0, 0
-  index: -1
 background
   rotate: false
   xy: 2, 2
@@ -34,34 +20,34 @@ background_old
   index: -1
 options-dn
   rotate: false
-  xy: 805, 462
+  xy: 805, 815
   size: 150, 150
   orig: 150, 150
   offset: 0, 0
   index: -1
 options-up
   rotate: false
-  xy: 804, 310
+  xy: 805, 663
   size: 150, 150
   orig: 150, 150
   offset: 0, 0
   index: -1
 play-dn
   rotate: false
-  xy: 804, 158
+  xy: 805, 511
   size: 150, 150
   orig: 150, 150
   offset: 0, 0
   index: -1
 play-up
   rotate: false
-  xy: 804, 6
+  xy: 805, 359
   size: 150, 150
   orig: 150, 150
   offset: 0, 0
   index: -1
 
-game-ui.pack4.png
+game-ui.pack3.png
 size: 1024,512
 format: RGBA8888
 filter: Nearest,Nearest

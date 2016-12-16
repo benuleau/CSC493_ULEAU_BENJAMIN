@@ -24,6 +24,9 @@ public class Log extends AbstractGameObject {
 
 		// Set bounding box for collision detection
 		bounds.set(0, 0, dimension.x, dimension.y);
+		
+		//Set physics values
+		//friction.set(-12.0f, 0.0f);
 
 		collected = false;
 	}

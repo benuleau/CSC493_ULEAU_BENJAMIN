@@ -37,6 +37,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import objects.Carrot;
+import util.HighScore;
 
 /**
  * @author Benjamin Uleau
@@ -65,12 +66,22 @@ public class WorldController extends InputAdapter implements Disposable{
 	private boolean goalReached;
 	public World b2World;
 	
+	public boolean onLevel2=false;
 	
-	private void initLevel() {
+	private void initLevel01() {
 		score = 0;
 		scoreVisual=score;
 		goalReached=false;
 		level = new Level(Constants.LEVEL_01);
+		cameraHelper.setTarget(level.ax);
+		initPhysics();
+	}
+	
+	private void initLevel02(){
+		scoreVisual=score;
+		goalReached=false;
+		onLevel2=true;
+		level=new Level(Constants.LEVEL_02);
 		cameraHelper.setTarget(level.ax);
 		initPhysics();
 	}
@@ -140,7 +151,10 @@ public class WorldController extends InputAdapter implements Disposable{
 		lives = Constants.LIVES_START;
 		livesVisual = lives;
 		timeLeftGameOverDelay = 0;
-		initLevel();
+		if(!goalReached)
+			initLevel01();
+		if(goalReached)
+			initLevel02();
 	}
 
 	@Override
@@ -214,13 +228,28 @@ public class WorldController extends InputAdapter implements Disposable{
 
 	public void update(float deltaTime) {		
 		handleDebugInput(deltaTime);
-		if (isGameOver() || goalReached) {
-			timeLeftGameOverDelay -= deltaTime;
-			if (timeLeftGameOverDelay < 0)
+		
+		
+		if(isGameOver()){
+			timeLeftGameOverDelay-=deltaTime;
+			HighScore.instance.setHighScore(score);
+			if(timeLeftGameOverDelay<0)
 				backToMenu();
-		} else {
+		}else if(goalReached){
+			if(onLevel2){
+				timeLeftGameOverDelay-=deltaTime;
+				HighScore.instance.setHighScore(score);
+				if(timeLeftGameOverDelay<0)
+					backToMenu();
+			}else{
+				HighScore.instance.setHighScore(score);
+				initLevel02();
+			}
+			
+		}else{
 			handleInputGame(deltaTime);
 		}
+		
 		level.update(deltaTime);
 		testCollisions();
 		b2World.step(deltaTime,  8,  3);
@@ -230,8 +259,12 @@ public class WorldController extends InputAdapter implements Disposable{
 			lives--;
 			if (isGameOver())
 				timeLeftGameOverDelay = Constants.TIME_DELAY_GAME_OVER;
-			else
-				initLevel();
+			else{
+				if(!onLevel2)
+					initLevel01();
+				else
+					initLevel02();
+			}
 		}
 		//level.tree.updateScrollPosition(cameraHelper.getPosition());
 		if (livesVisual > lives)
@@ -335,6 +368,8 @@ public class WorldController extends InputAdapter implements Disposable{
 		Vector2 centerPosAx=new Vector2(level.ax.position);
 		centerPosAx.x+=level.ax.bounds.width;
 		spawnCarrots(centerPosAx, Constants.CARROTS_SPAWN_MAX, Constants.CARROTS_SPAWN_RADIUS);
+		HighScore.instance.setHighScore(score);
+		System.out.println(HighScore.instance.getHighScore());
 	}
 
 	private void testCollisions() {
